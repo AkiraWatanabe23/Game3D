@@ -4,13 +4,18 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-    private void Start()
+    public static void LoadTitle()
     {
-
+        SceneManager.LoadScene(Define.TITLE_NAME);
     }
 
-    private void Update()
+    public static void LoadInGame()
     {
-        
+        SceneManager.LoadScene(Define.INGAME_NAME);
+    }
+
+    public static void LoadResult()
+    {
+        SceneManager.LoadScene(Define.RESULT_NAME);
     }
 }
