@@ -2,7 +2,7 @@ using Consts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class SceneLoaders : MonoBehaviour
 {
     public static void LoadTitle()
     {

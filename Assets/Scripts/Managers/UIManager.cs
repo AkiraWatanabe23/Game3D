@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// UIの表示をこのクラスで行う
+/// ゲームシーン内のUIの表示をこのクラスで行う
 /// </summary>
 public class UIManager : MonoBehaviour
 {
