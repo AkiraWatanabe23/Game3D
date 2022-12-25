@@ -1,4 +1,4 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //ƒQ[ƒ€‚ğI—¹‚·‚é
+    //ã‚²ãƒ¼ãƒ ã‚’çµ‚äº†ã™ã‚‹
     private void GameClose()
     {
 

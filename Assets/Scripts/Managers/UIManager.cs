@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒQ[ƒ€ƒV[ƒ““à‚ÌUI‚Ì•\¦‚ğ‚±‚ÌƒNƒ‰ƒX‚Ås‚¤
+/// ã‚²ãƒ¼ãƒ ã‚·ãƒ¼ãƒ³å†…ã®UIã®è¡¨ç¤ºã‚’ã“ã®ã‚¯ãƒ©ã‚¹ã§è¡Œã†
 /// </summary>
 public class UIManager : MonoBehaviour
 {
-    [Tooltip("ƒV[ƒ“ã‚É•\¦‚·‚éText")]
+    [Tooltip("ã‚·ãƒ¼ãƒ³ä¸Šã«è¡¨ç¤ºã™ã‚‹Text")]
     [SerializeField] private Text[] _sceneTexts = new Text[5];
 
     private void Update()

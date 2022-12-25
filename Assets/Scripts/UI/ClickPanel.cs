@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -7,7 +7,7 @@ public class ClickPanel : MonoBehaviour, IPointerClickHandler
     [SerializeField] private UnityEvent _event;
 
     /// <summary>
-    /// ƒIƒuƒWƒFƒNƒg‚ğƒNƒŠƒbƒN‚µ‚½‚çAİ’è‚µ‚½ˆ—‚ğÀs‚·‚é
+    /// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸã‚‰ã€è¨­å®šã—ãŸå‡¦ç†ã‚’å®Ÿè¡Œã™ã‚‹
     /// </summary>
     public void OnPointerClick(PointerEventData eventData)
     {

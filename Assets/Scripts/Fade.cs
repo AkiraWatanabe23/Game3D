@@ -1,21 +1,22 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
-    [Tooltip("ƒtƒF[ƒh‚³‚¹‚éUI")]
+    [Tooltip("ãƒ•ã‚§ãƒ¼ãƒ‰ã•ã›ã‚‹UI")]
     [SerializeField] private Image _fadePanel;
-    [Tooltip("ÀsŠÔ")]
+    [Tooltip("å®Ÿè¡Œæ™‚é–“")]
     [SerializeField] private float _fadeTime = 1f;
 
-    [Header("ƒeƒXƒg—p")]
-    [Tooltip("w’è‚µ‚½ŠÖ”‚ğÀs")]
+    [Header("ãƒ†ã‚¹ãƒˆç”¨")]
+    [Tooltip("æŒ‡å®šã—ãŸé–¢æ•°ã‚’å®Ÿè¡Œ")]
     [SerializeField] private UnityEvent _event;
 
     private void Start()
     {
+        //ãƒ†ã‚¹ãƒˆã§ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã€ã‚¢ã‚¦ãƒˆã‚’è¡Œã†
         _event?.Invoke();
     }
 
@@ -33,7 +34,7 @@ public class Fade : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
-        //ƒ¿’l(“§–¾“x)‚ğ 1 -> 0 ‚É‚·‚é(­‚µ‚¸‚Â–¾‚é‚­‚·‚é)
+        //Î±å€¤(é€æ˜åº¦)ã‚’ 1 -> 0 ã«ã™ã‚‹(å°‘ã—ãšã¤æ˜ã‚‹ãã™ã‚‹)
         float alpha = 1f;
         Color color = _fadePanel.color;
 
@@ -55,7 +56,7 @@ public class Fade : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
-        //ƒ¿’l(“§–¾“x)‚ğ 0 -> 1 ‚É‚·‚é(­‚µ‚¸‚ÂˆÃ‚­‚·‚é)
+        //Î±å€¤(é€æ˜åº¦)ã‚’ 0 -> 1 ã«ã™ã‚‹(å°‘ã—ãšã¤æš—ãã™ã‚‹)
         float alpha = 0f;
         Color color = _fadePanel.color;
 

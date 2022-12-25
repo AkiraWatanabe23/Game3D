@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// SE�𗬂��Ƃ��Ɏg��
+/// SEを流すときに使う
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
@@ -14,6 +14,10 @@ public class SoundManager : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
+    /// <summary>
+    /// 指定されたSEを再生する
+    /// </summary>
+    /// <param name="audio"> 再生する音 </param>
     public void AudioPlay(AudioClip audio)
     {
         _source.clip = audio;
