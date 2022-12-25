@@ -1,8 +1,10 @@
-﻿using Consts;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Tooltip("ゲームを終了するキー")]
+    [SerializeField] private KeyCode _closeKey;
+
     private void Start()
     {
 
@@ -10,16 +12,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(_closeKey))
         {
             GameClose();
         }
     }
 
-    //ゲームを終了する
+    /// <summary>
+    /// ゲームを終了する
+    /// </summary>
     private void GameClose()
     {
-
 #if UNITY_EDITOR
     UnityEditor.EditorApplication.isPlaying = false;
 #else
