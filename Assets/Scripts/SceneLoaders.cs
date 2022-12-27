@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// 指定したシーンに遷移する(フェード後)
+/// </summary>
 public class SceneLoaders : MonoBehaviour
 {
     public static void LoadTitle()

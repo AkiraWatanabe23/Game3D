@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
@@ -10,30 +9,28 @@ public class Fade : MonoBehaviour
     [Tooltip("実行時間")]
     [SerializeField] private float _fadeTime = 1f;
 
-    [Header("テスト用")]
-    [Tooltip("指定した関数を実行")]
-    [SerializeField] private UnityEvent _event;
+    private static Fade _instance = default;
 
-    private void Start()
+    private void Awake()
     {
-        //テストでフェードイン、アウトを行う
-        _event?.Invoke();
+        _instance = this;
     }
 
-    public void StartFadeIn()
+    //↓フェード処理の後に、実行したい関数があれば引数に設定する
+    public static void StartFadeIn()
     {
-        _fadePanel.gameObject.SetActive(true);
-        StartCoroutine(FadeIn());
+        _instance.StartCoroutine(_instance.FadeIn());
     }
 
-    public void StartFadeOut()
+    public static void StartFadeOut()
     {
-        _fadePanel.gameObject.SetActive(true);
-        StartCoroutine(FadeOut());
+        _instance.StartCoroutine(_instance.FadeOut());
     }
 
     private IEnumerator FadeIn()
     {
+        _fadePanel.gameObject.SetActive(true);
+
         //α値(透明度)を 1 -> 0 にする(少しずつ明るくする)
         float alpha = 1f;
         Color color = _fadePanel.color;
@@ -56,6 +53,8 @@ public class Fade : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
+        _fadePanel.gameObject.SetActive(true);
+
         //α値(透明度)を 0 -> 1 にする(少しずつ暗くする)
         float alpha = 0f;
         Color color = _fadePanel.color;
@@ -74,6 +73,5 @@ public class Fade : MonoBehaviour
         while (alpha < 1f);
 
         Debug.Log("FadeOut");
-        SceneLoaders.LoadInGame();
     }
 }
