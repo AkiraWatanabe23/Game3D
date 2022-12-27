@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        //指定したキーを入力することでゲームの実行を終了する
         if (Input.GetKeyDown(_closeKey))
         {
             GameClose();
