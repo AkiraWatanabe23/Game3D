@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Consts;
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +11,37 @@ public class Fade : MonoBehaviour
     [Tooltip("実行時間")]
     [SerializeField] private float _fadeTime = 1f;
 
+    /// <summary> このクラスのインスタンス </summary>
     private static Fade _instance = default;
+    /// <summary> 遷移先のシーン名 </summary>
+    private string _sceneName = Define.TITLE_NAME;
+
+    public string SceneName => _sceneName;
 
     private void Awake()
     {
         _instance = this;
+
+        //現在のシーンが遷移する時にどのシーンに遷移するのかを決定する
+        if (_sceneName == Define.TITLE_NAME)
+        {
+            _sceneName = Define.INGAME_NAME;
+        }
+        else if (_sceneName == Define.INGAME_NAME)
+        {
+            _sceneName = Define.RESULT_NAME;
+        }
+        else if (_sceneName == Define.RESULT_NAME)
+        {
+            _sceneName = Define.TITLE_NAME;
+        }
+        Debug.Log(_sceneName);
+    }
+
+    private void Start()
+    {
+        //フェード -> シーン遷移 の流れのテスト
+        StartFadeOut();
     }
 
     //↓フェード処理の後に、実行したい関数があれば引数に設定する
@@ -24,10 +52,10 @@ public class Fade : MonoBehaviour
 
     public static void StartFadeOut()
     {
-        _instance.StartCoroutine(_instance.FadeOut());
+        _instance.StartCoroutine(_instance.FadeOut(() => SceneLoaders.SceneLoad(_instance.SceneName)));
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -49,9 +77,10 @@ public class Fade : MonoBehaviour
         while (alpha > 0f);
 
         _fadePanel.gameObject.SetActive(false);
+        action?.Invoke();
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -73,5 +102,6 @@ public class Fade : MonoBehaviour
         while (alpha < 1f);
 
         Debug.Log("FadeOut");
+        action?.Invoke();
     }
 }
