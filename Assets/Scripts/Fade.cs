@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Fade : MonoBehaviour
 {
@@ -14,9 +15,10 @@ public class Fade : MonoBehaviour
     /// <summary> このクラスのインスタンス </summary>
     private static Fade _instance = default;
     /// <summary> 遷移先のシーン名 </summary>
-    private static string _moveSceneName = Define.TITLE_NAME;
+    private static string _moveSceneName = default;
 
-    public string MoveSceneName { get => _moveSceneName; set => _moveSceneName = value; }
+    //public string MoveSceneName { get => _moveSceneName; set => _moveSceneName = value; }
+    public string MoveSceneName => _moveSceneName;
 
     private void Awake()
     {
@@ -30,6 +32,13 @@ public class Fade : MonoBehaviour
             Destroy(this);
         }
 
+        if (_fadePanel == null)
+        {
+            _fadePanel = GameObject.Find("FadePanel").GetComponent<Image>();
+        }
+
+        //現在のシーン名を取得
+        _moveSceneName = SceneManager.GetActiveScene().name;
         //現在のシーンが遷移する時にどのシーンに遷移するのかを決定する
         if (_moveSceneName == Define.TITLE_NAME)
         {
