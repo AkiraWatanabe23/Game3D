@@ -1,5 +1,4 @@
-﻿using Consts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -7,24 +6,9 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneLoaders : MonoBehaviour
 {
+    //シーン名を引数に渡し、遷移する
     public static void SceneLoad(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-
-    //指定したシーンに遷移する関数(Title, InGame, Result)
-    public static void LoadToTitle()
-    {
-        SceneManager.LoadScene(Define.TITLE_NAME);
-    }
-
-    public static void LoadToInGame()
-    {
-        SceneManager.LoadScene(Define.INGAME_NAME);
-    }
-
-    public static void LoadToResult()
-    {
-        SceneManager.LoadScene(Define.RESULT_NAME);
     }
 }

@@ -20,7 +20,16 @@ public class Fade : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
+
 
         //現在のシーンが遷移する時にどのシーンに遷移するのかを決定する
         if (_sceneName == Define.TITLE_NAME)
@@ -101,7 +110,7 @@ public class Fade : MonoBehaviour
         }
         while (alpha < 1f);
 
-        Debug.Log("FadeOut");
+        Debug.Log("FadeComplete");
         action?.Invoke();
     }
 }
