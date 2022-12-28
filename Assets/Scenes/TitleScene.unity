@@ -460,7 +460,6 @@ GameObject:
   - component: {fileID: 490507080}
   - component: {fileID: 490507079}
   - component: {fileID: 490507081}
-  - component: {fileID: 490507082}
   m_Layer: 5
   m_Name: ManualPanel
   m_TagString: Untagged
@@ -542,9 +541,9 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 490507081}
-        m_TargetAssemblyTypeName: ClickPanel, Assembly-CSharp
-        m_MethodName: FadeLoad
+      - m_Target: {fileID: 534990362}
+        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
+        m_MethodName: StartFadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -554,30 +553,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 490507082}
-        m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: LoadInGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &490507082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490507077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db213e728fe29ca47ab4d3ee6ead3daf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &534990361
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,21 +584,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fadePanel: {fileID: 478141756}
   _fadeTime: 1
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 534990361}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &534990363
 Transform:
   m_ObjectHideFlags: 0
