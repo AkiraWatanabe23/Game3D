@@ -12,31 +12,11 @@ public class Fade : MonoBehaviour
     [Tooltip("実行時間")]
     [SerializeField] private float _fadeTime = 1f;
 
-    /// <summary> このクラスのインスタンス </summary>
-    private static Fade _instance = default;
     /// <summary> 遷移先のシーン名 </summary>
-    private static string _moveSceneName = default;
-
-    //public string MoveSceneName { get => _moveSceneName; set => _moveSceneName = value; }
-    public string MoveSceneName => _moveSceneName;
+    private string _moveSceneName = default;
 
     private void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
-        }
-
-        if (_fadePanel == null)
-        {
-            _fadePanel = GameObject.Find("FadePanel").GetComponent<Image>();
-        }
-
         //現在のシーン名を取得
         _moveSceneName = SceneManager.GetActiveScene().name;
         //現在のシーンが遷移する時にどのシーンに遷移するのかを決定する
@@ -60,15 +40,15 @@ public class Fade : MonoBehaviour
         StartFadeIn();
     }
 
-    public static void StartFadeIn()
+    public void StartFadeIn()
     {
-        _instance.StartCoroutine(_instance.FadeIn());
+        StartCoroutine(FadeIn());
     }
 
-    public static void StartFadeOut()
+    public void StartFadeOut()
     {
-        _instance.StartCoroutine(_instance.FadeOut(
-            () => SceneLoaders.SceneLoad(_instance.MoveSceneName)));
+        StartCoroutine(FadeOut(
+            () => SceneLoaders.SceneLoad(_moveSceneName)));
     }
 
     //↓フェード処理の後に、実行したい関数があれば引数に設定する
