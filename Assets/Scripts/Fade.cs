@@ -32,7 +32,7 @@ public class Fade : MonoBehaviour
         {
             _moveSceneName = Define.TITLE_NAME;
         }
-        Debug.Log(_moveSceneName);
+        Debug.Log($"次は {_moveSceneName} に遷移します");
     }
 
     private void Start()
@@ -78,6 +78,7 @@ public class Fade : MonoBehaviour
         action?.Invoke();
     }
 
+    //↓フェード処理の後に、実行したい関数があれば引数に設定する
     private IEnumerator FadeOut(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
