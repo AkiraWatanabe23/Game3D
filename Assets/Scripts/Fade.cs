@@ -19,7 +19,7 @@ public class Fade : MonoBehaviour
     {
         //現在のシーン名を取得
         _moveSceneName = SceneManager.GetActiveScene().name;
-        //現在のシーンが遷移する時にどのシーンに遷移するのかを決定する
+        //次にどのシーンに遷移するのかを決定する
         if (_moveSceneName == Define.TITLE_NAME)
         {
             _moveSceneName = Define.INGAME_NAME;
@@ -47,6 +47,7 @@ public class Fade : MonoBehaviour
 
     public void StartFadeOut()
     {
+        //フェードアウト→シーン遷移
         StartCoroutine(FadeOut(
             () => SceneLoaders.SceneLoad(_moveSceneName)));
     }
