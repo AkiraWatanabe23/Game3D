@@ -24,8 +24,7 @@ public class GameManager : MonoBehaviour
         if (_timer <= 0f)
         {
             //TODO：制限時間が0になった時に勝利判定をしてリザルトに遷移
-            _fadeObject.StartFadeOut(
-                () => SceneLoaders.SceneLoad(Fade.MoveSceneName));
+            _fadeObject.StartFadeOut();
         }
 
         //指定したキーを入力し、ゲームの実行を終了する

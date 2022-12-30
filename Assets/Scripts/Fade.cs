@@ -41,22 +41,19 @@ public class Fade : MonoBehaviour
         StartFadeIn();
     }
 
-    public void StartFadeIn(Action action = null)
+    public void StartFadeIn()
     {
         StartCoroutine(FadeIn());
-        //フェード後に実行する関数
-        action?.Invoke();
     }
 
-    public void StartFadeOut(Action action = null)
+    public void StartFadeOut()
     {
         //フェードアウト→シーン遷移
-        StartCoroutine(FadeOut());
-        //フェード後に実行する関数
-        action?.Invoke();
+        StartCoroutine(FadeOut(
+                () => SceneLoaders.SceneLoad(_moveSceneName)));
     }
 
-    private IEnumerator FadeIn()
+    private IEnumerator FadeIn(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -78,9 +75,11 @@ public class Fade : MonoBehaviour
         while (alpha > 0f);
 
         _fadePanel.gameObject.SetActive(false);
+        //フェード後に実行する関数
+        action?.Invoke();
     }
 
-    private IEnumerator FadeOut()
+    private IEnumerator FadeOut(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -100,5 +99,8 @@ public class Fade : MonoBehaviour
             yield return null;
         }
         while (alpha < 1f);
+
+        //フェード後に実行する関数
+        action?.Invoke();
     }
 }
