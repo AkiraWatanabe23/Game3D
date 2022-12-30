@@ -19,7 +19,7 @@ public class Fade : MonoBehaviour
     {
         //現在のシーン名を取得
         _moveSceneName = SceneManager.GetActiveScene().name;
-        //次にどのシーンに遷移するのかを決定する
+        //次にどのシーンに遷移するのかを決定する(問題点：シーン数が固定になる...)
         if (_moveSceneName == Define.TITLE_NAME)
         {
             _moveSceneName = Define.INGAME_NAME;
@@ -32,7 +32,6 @@ public class Fade : MonoBehaviour
         {
             _moveSceneName = Define.TITLE_NAME;
         }
-        Debug.Log($"次は {_moveSceneName} に遷移します");
     }
 
     private void Start()
@@ -52,7 +51,6 @@ public class Fade : MonoBehaviour
             () => SceneLoaders.SceneLoad(_moveSceneName)));
     }
 
-    //↓フェード処理の後に、実行したい関数があれば引数に設定する
     private IEnumerator FadeIn(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
@@ -75,10 +73,10 @@ public class Fade : MonoBehaviour
         while (alpha > 0f);
 
         _fadePanel.gameObject.SetActive(false);
+        //フェード後に実行する関数
         action?.Invoke();
     }
 
-    //↓フェード処理の後に、実行したい関数があれば引数に設定する
     private IEnumerator FadeOut(Action action = null)
     {
         _fadePanel.gameObject.SetActive(true);
@@ -100,6 +98,7 @@ public class Fade : MonoBehaviour
         }
         while (alpha < 1f);
 
+        //フェード後に実行する関数
         action?.Invoke();
     }
 }

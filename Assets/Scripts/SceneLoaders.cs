@@ -1,7 +1,7 @@
 ﻿using UnityEngine.SceneManagement;
 
 /// <summary>
-/// 指定したシーンに遷移する(フェード後)
+/// 指定したシーンに遷移する
 /// </summary>
 public class SceneLoaders
 {

@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     {
         _timer -= Time.deltaTime;
 
-        if (_timer <= 0)
+        if (_timer <= 0f)
         {
             //TODO：制限時間が0になった時に勝利判定をしてリザルトに遷移
             _fadeObject.StartFadeOut();
