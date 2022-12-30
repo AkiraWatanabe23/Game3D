@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour
     [Tooltip("フェード処理を実行するオブジェクト")]
     [SerializeField] private Fade _fadeObject;
 
-    private static float _timer = Define.GAME_TIME;
+    private static float _timer = 0f;
 
     public static float Timer { get => _timer; set => _timer = value; }
 
     private void Start()
     {
-
+        _timer = Define.GAME_TIME;
     }
 
     private void Update()
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
         if (_timer <= 0)
         {
-            //TODO：制限時間が0になった時に勝利判定をして終了する
+            //TODO：制限時間が0になった時に勝利判定をしてリザルトに遷移
             _fadeObject.StartFadeOut();
         }
 
