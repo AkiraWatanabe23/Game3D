@@ -13,7 +13,9 @@ public class Fade : MonoBehaviour
     [SerializeField] private float _fadeTime = 1f;
 
     /// <summary> 遷移先のシーン名 </summary>
-    private string _moveSceneName = default;
+    private static string _moveSceneName = default;
+
+    public static string MoveSceneName => _moveSceneName;
 
     private void Awake()
     {
@@ -39,19 +41,22 @@ public class Fade : MonoBehaviour
         StartFadeIn();
     }
 
-    public void StartFadeIn()
+    public void StartFadeIn(Action action = null)
     {
         StartCoroutine(FadeIn());
+        //フェード後に実行する関数
+        action?.Invoke();
     }
 
-    public void StartFadeOut()
+    public void StartFadeOut(Action action = null)
     {
         //フェードアウト→シーン遷移
-        StartCoroutine(FadeOut(
-            () => SceneLoaders.SceneLoad(_moveSceneName)));
+        StartCoroutine(FadeOut());
+        //フェード後に実行する関数
+        action?.Invoke();
     }
 
-    private IEnumerator FadeIn(Action action = null)
+    private IEnumerator FadeIn()
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -73,11 +78,9 @@ public class Fade : MonoBehaviour
         while (alpha > 0f);
 
         _fadePanel.gameObject.SetActive(false);
-        //フェード後に実行する関数
-        action?.Invoke();
     }
 
-    private IEnumerator FadeOut(Action action = null)
+    private IEnumerator FadeOut()
     {
         _fadePanel.gameObject.SetActive(true);
 
@@ -97,8 +100,5 @@ public class Fade : MonoBehaviour
             yield return null;
         }
         while (alpha < 1f);
-
-        //フェード後に実行する関数
-        action?.Invoke();
     }
 }
