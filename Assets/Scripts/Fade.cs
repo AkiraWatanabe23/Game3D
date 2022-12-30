@@ -98,7 +98,6 @@ public class Fade : MonoBehaviour
         }
         while (alpha < 1f);
 
-        Debug.Log("FadeComplete");
         action?.Invoke();
     }
 }
