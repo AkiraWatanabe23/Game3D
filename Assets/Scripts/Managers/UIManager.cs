@@ -11,6 +11,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        
+        _sceneTexts[0].text = GameManager.Timer.ToString("F0");
     }
 }
