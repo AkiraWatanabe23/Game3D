@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("ステータス一覧")]
     [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _jumpPower = 1f;
 
     private Rigidbody _rb;
 
@@ -19,6 +20,13 @@ public class PlayerController : MonoBehaviour
         float hol = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
 
-        _rb.velocity = new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed);
+        float y = _rb.velocity.y;
+        if (Input.GetButtonDown("Jump"))
+        {
+            y = _jumpPower;
+        }
+
+        _rb.velocity = 
+            new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
     }
 }
