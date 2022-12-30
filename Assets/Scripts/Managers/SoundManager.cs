@@ -5,6 +5,9 @@
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
+    [Tooltip("SEの配列")]
+    [SerializeField] private AudioClip[] _clips = new AudioClip[5];
+
     private AudioSource _source;
 
     private void Start()
@@ -15,10 +18,10 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// 指定されたSEを再生する
     /// </summary>
-    /// <param name="audio"> 再生する音 </param>
-    public void AudioPlay(AudioClip audio)
+    /// <param name="index"> SEの配列のインデックス </param>
+    public void AudioPlay(int index)
     {
-        _source.clip = audio;
-        _source.PlayOneShot(audio);
+        _source.clip = _clips[index];
+        _source.PlayOneShot(_clips[index]);
     }
 }

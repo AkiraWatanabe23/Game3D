@@ -9,4 +9,11 @@ namespace Consts
         public const string INGAME_NAME = "MainGameScene";
         public const string RESULT_NAME = "ResultScene";
     }
+
+    public enum SoundType
+    {
+        Attack,
+        Damage,
+        Jump
+    }
 }
