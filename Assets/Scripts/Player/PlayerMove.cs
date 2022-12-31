@@ -1,10 +1,10 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 [System.Serializable]
 public class PlayerMove
 {
-    [Header("ˆÚ“®ŒnƒXƒe[ƒ^ƒX")]
+    [Header("ç§»å‹•ç³»ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
     [SerializeField] private bool _isGround = false;

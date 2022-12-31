@@ -1,10 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [System.Serializable]
 public class PlayerHealth
 {
-    [Header("‘Ì—ÍŒnƒXƒe[ƒ^ƒX")]
-    [SerializeField] private int _hp = 100;
+    [Header("ä½“åŠ›ç³»ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹")]
+    [SerializeField] private static int _hp = 100;
+
+    public static int HP { get => _hp; set => _hp = value; }
 
     public void Init()
     {
