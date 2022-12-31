@@ -1,4 +1,4 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 public class EnemyController : EnemyBase
@@ -7,17 +7,17 @@ public class EnemyController : EnemyBase
 
     private void Update()
     {
-        //destination...s‚«æ(NavMesh‚Ìis•ûŒü‚ÌŒˆ’è)
+        //destination...è¡Œãå…ˆ(NavMeshã®é€²è¡Œæ–¹å‘ã®æ±ºå®š)
         Agent.SetDestination(_target.position);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //TODOFw’è‚Ì‰ÓŠ‚ğs‚Á‚½‚è—ˆ‚½‚è‚·‚é‚æ‚¤‚É‚·‚é
+        //TODOï¼šæŒ‡å®šã®ç®‡æ‰€ã‚’è¡Œã£ãŸã‚Šæ¥ãŸã‚Šã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
 
         if (other.CompareTag(Define.PLAYER_TAG))
         {
-            //TODOFPlayer‚É’Ç‚¢‚Â‚¢‚½‚Æ‚«‚É‚È‚É‚©ˆ—‚ğ‚·‚é
+            //TODOï¼šPlayerã«è¿½ã„ã¤ã„ãŸã¨ãã«ãªã«ã‹å‡¦ç†ã‚’ã™ã‚‹
         }
     }
 }
