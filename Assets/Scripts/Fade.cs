@@ -22,17 +22,17 @@ public class Fade : MonoBehaviour
         //現在のシーン名を取得
         _moveSceneName = SceneManager.GetActiveScene().name;
         //次にどのシーンに遷移するのかを決定する(問題点：シーン数が固定になる...)
-        if (_moveSceneName == Define.TITLE_NAME)
+        if (_moveSceneName == Define.Scenes[SceneNames.TITLE_NAME])
         {
-            _moveSceneName = Define.INGAME_NAME;
+            _moveSceneName = Define.Scenes[SceneNames.INGAME_NAME];
         }
-        else if (_moveSceneName == Define.INGAME_NAME)
+        else if (_moveSceneName == Define.Scenes[SceneNames.INGAME_NAME])
         {
-            _moveSceneName = Define.RESULT_NAME;
+            _moveSceneName = Define.Scenes[SceneNames.RESULT_NAME];
         }
-        else if (_moveSceneName == Define.RESULT_NAME)
+        else if (_moveSceneName == Define.Scenes[SceneNames.RESULT_NAME])
         {
-            _moveSceneName = Define.TITLE_NAME;
+            _moveSceneName = Define.Scenes[SceneNames.TITLE_NAME];
         }
     }
 
