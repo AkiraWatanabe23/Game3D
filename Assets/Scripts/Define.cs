@@ -7,6 +7,7 @@ namespace Consts
     {
         public const float GAME_TIME = 10f;
         public const string GROUND_TAG = "Ground";
+        public const string PLAYER_TAG = "Player";
         public static readonly Dictionary<SceneNames, string> Scenes = new()
         {
             [SceneNames.TITLE_NAME] = "TitleScene",
