@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 336375523}
   m_Layer: 0
   m_Name: TestRoom
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 2012741111}
   m_Layer: 0
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -784,19 +784,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012741104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9b2e65b48360842a0dd2a33cccd0db, type: 3}
+  m_Script: {fileID: 11500000, guid: 51017701c5068524aa6168df3eb57e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _jumpPower: 5
-  _isGround: 0
+  _movements:
+    _moveSpeed: 5
+    _jumpPower: 5
+    _isGround: 0
 --- !u!43 &2028780767
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24000
+  m_Name: pb_Mesh23788
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
