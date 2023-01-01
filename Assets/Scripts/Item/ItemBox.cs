@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class ItemBox : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒAƒCƒeƒ€‚ğÌ‚ÄAList‚©‚çíœ‚·‚é
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¨ã¦ã€Listã‹ã‚‰å‰Šé™¤ã™ã‚‹
     /// </summary>
     private void DisposeItem(GameObject item)
     {

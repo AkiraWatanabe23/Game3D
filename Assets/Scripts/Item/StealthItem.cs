@@ -1,21 +1,11 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 /// <summary>
-/// Player‚ğƒXƒeƒ‹ƒXó‘Ô‚É‚µ‚Ä“G‚ÉŒ©‚Â‚©‚ç‚È‚­‚·‚é
+/// Playerã‚’ã‚¹ãƒ†ãƒ«ã‚¹çŠ¶æ…‹ã«ã—ã¦æ•µã«è¦‹ã¤ã‹ã‚‰ãªãã™ã‚‹
 /// </summary>
 public class StealthItem : ItemBase
 {
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-
-    }
-
     protected override void TouchPlayer(GameObject go)
     {
         go.tag = Define.STEALTH_TAG;

@@ -1,4 +1,4 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 public class HealItem : ItemBase
@@ -9,7 +9,7 @@ public class HealItem : ItemBase
     {
         PlayerHealth.HP += _healValue;
 
-        //Å‘å’l‚ð‰z‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+        //æœ€å¤§å€¤ã‚’è¶Šãˆãªã„ã‚ˆã†ã«ã™ã‚‹
         if (PlayerHealth.HP >= PlayerHealth.MaxHp)
         {
             PlayerHealth.HP = PlayerHealth.MaxHp;

@@ -21,7 +21,9 @@ public abstract class EnemyBase : MonoBehaviour
     public enum EnemyState
     {
         DEFAULT,
+        /// <summary> 通常の移動状態 </summary>
         MOVE,
+        /// <summary> Player追跡中 </summary>
         CHASE,
     }
 }
