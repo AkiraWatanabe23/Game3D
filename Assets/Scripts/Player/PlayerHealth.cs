@@ -15,7 +15,7 @@ public class PlayerHealth
 
     public void Update()
     {
-        
+
     }
 
     public void Damage(int damage)
