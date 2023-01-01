@@ -22,8 +22,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _hpSlider.maxValue = PlayerHealth.HP;
-        _hpSlider.value = PlayerHealth.HP;
+        _hpSlider.maxValue = _maxHp;
+        _hpSlider.value = _maxHp;
 
         _varColor = GameObject.Find("Fill").GetComponent<Image>();
     }

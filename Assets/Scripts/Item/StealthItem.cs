@@ -28,7 +28,7 @@ public class StealthItem : ItemBase
             TouchPlayer(other.gameObject);
             gameObject.SetActive(false);
         }
-        else if (other.gameObject.CompareTag(Define.PLAYER_TAG))
+        else if (other.gameObject.CompareTag(Define.ITEM_TAG))
         {
             AddToList(gameObject);
         }

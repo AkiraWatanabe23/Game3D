@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerMove _movements = default;
     [SerializeField] private PlayerHealth _health = default;
 
-    private void Start()
+    private void Awake()
     {
         var rb = GetComponent<Rigidbody>();
         _movements.Init(rb);
