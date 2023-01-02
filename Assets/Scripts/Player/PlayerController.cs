@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour, IPause
     public void Pause()
     {
         //TODO：一時停止処理の記述
+        //入力を切る
     }
 
     public void Resume()

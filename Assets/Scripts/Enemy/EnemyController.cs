@@ -97,6 +97,7 @@ public class EnemyController : MonoBehaviour, IPause
     public void Pause()
     {
         //TODO：一時停止処理の記述
+        //移動、探索
     }
 
     public void Resume()
