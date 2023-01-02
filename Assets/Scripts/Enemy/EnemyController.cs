@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IPause
 {
     [SerializeField] private Transform[] _movePos = new Transform[2];
     [Tooltip("視界の範囲")]
@@ -92,6 +92,16 @@ public class EnemyController : MonoBehaviour
             //Playerを発見した(視界に入った)ときに追跡するようにする
             ChasePlayer(other.gameObject);
         }
+    }
+
+    public void Pause()
+    {
+        //TODO：一時停止処理の記述
+    }
+
+    public void Resume()
+    {
+        //TODO：処理再開の記述
     }
 
     public enum EnemyState

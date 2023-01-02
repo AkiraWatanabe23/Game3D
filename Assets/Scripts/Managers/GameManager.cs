@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IPause
 {
     [Tooltip("テスト用の無敵状態")]
     [SerializeField] private static bool _isGodMode = false;
@@ -27,11 +27,6 @@ public class GameManager : MonoBehaviour
         }
         //TODO：Playerを、設定したスポーン位置の内のいずれかにランダムで生成する
         //Instantiate(_playerPrefab, _spawnPos[Random.Range(0, _spawnPos.Length)]);
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
@@ -62,5 +57,15 @@ public class GameManager : MonoBehaviour
 #else
     Application.Quit();
 #endif
+    }
+
+    public void Pause()
+    {
+        //TODO：一時停止処理の記述
+    }
+
+    public void Resume()
+    {
+        //TODO：処理再開の記述
     }
 }

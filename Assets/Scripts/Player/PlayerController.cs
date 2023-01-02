@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Playerの各機能をまとめたもの
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPause
 {
     [SerializeField] private PlayerMove _movements = default;
     [SerializeField] private PlayerHealth _health = default;
@@ -26,5 +26,15 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         _movements.OnTriggerEnter(other);
+    }
+
+    public void Pause()
+    {
+        //TODO：一時停止処理の記述
+    }
+
+    public void Resume()
+    {
+        //TODO：処理再開の記述
     }
 }
