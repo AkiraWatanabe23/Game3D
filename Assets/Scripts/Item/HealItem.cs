@@ -5,7 +5,7 @@ public class HealItem : ItemBase
 {
     [SerializeField] private int _healValue = 1;
 
-    protected override void TouchPlayer(GameObject go)
+    protected override void UseItem(GameObject go)
     {
         //PlayerHealth.HP += _healValue;
 
@@ -20,8 +20,7 @@ public class HealItem : ItemBase
     {
         if (other.gameObject.CompareTag(Define.PLAYER_TAG))
         {
-            TouchPlayer(other.gameObject);
-            gameObject.SetActive(false);
+            ItemBox.AddToList(gameObject);
         }
     }
 }

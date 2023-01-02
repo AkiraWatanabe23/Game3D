@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/TitleScene.unity
     guid: de205d4f47d0cc747a7b0245b0a05c51
   - enabled: 1
-    path: Assets/Scenes/FirstFloorScene.unity
+    path: Assets/Scenes/GameScenes/FirstFloorScene.unity
     guid: f64e2e10e5423f94ebe17b114d2edf5a
   - enabled: 1
-    path: Assets/Scenes/FirstBasementScene.unity
+    path: Assets/Scenes/GameScenes/FirstBasementScene.unity
     guid: 72262f97478462f4883890a858cfca70
   - enabled: 1
-    path: Assets/Scenes/SecondBasementScene.unity
+    path: Assets/Scenes/GameScenes/SecondBasementScene.unity
     guid: 9456c2ea91af8324fa70e1c9a034e89e
   - enabled: 1
     path: Assets/Scenes/ResultScene.unity

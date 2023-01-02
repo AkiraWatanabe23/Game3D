@@ -13,7 +13,6 @@ namespace Consts
         public const string GROUND_TAG = "Ground";
         public const string PLAYER_TAG = "Player";
         public const string STEALTH_TAG = "Stealth";
-        public const string ITEM_TAG = "Item";
 
         //シーン名をenumでまとめたDictionary(UIでのシーン遷移で使う)
         public static readonly Dictionary<SceneNames, string> Scenes = new()

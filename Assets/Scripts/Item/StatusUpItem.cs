@@ -5,7 +5,7 @@ public class StatusUpItem : ItemBase
 {
     [SerializeField] private StatusType _status = StatusType.DEFAULT;
 
-    protected override void TouchPlayer(GameObject go)
+    protected override void UseItem(GameObject go)
     {
         //ステータスを向上させる(テスト)
         if (_status == StatusType.MOVE)
@@ -26,8 +26,7 @@ public class StatusUpItem : ItemBase
     {
         if (other.gameObject.CompareTag(Define.PLAYER_TAG))
         {
-            TouchPlayer(other.gameObject);
-            gameObject.SetActive(false);
+            ItemBox.AddToList(gameObject);
         }
     }
 

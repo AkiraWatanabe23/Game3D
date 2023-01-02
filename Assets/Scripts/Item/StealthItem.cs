@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class StealthItem : ItemBase
 {
-    protected override void TouchPlayer(GameObject go)
+    protected override void UseItem(GameObject go)
     {
         go.tag = Define.STEALTH_TAG;
     }
@@ -15,12 +15,7 @@ public class StealthItem : ItemBase
     {
         if (other.gameObject.CompareTag(Define.PLAYER_TAG))
         {
-            TouchPlayer(other.gameObject);
-            gameObject.SetActive(false);
-        }
-        else if (other.gameObject.CompareTag(Define.ITEM_TAG))
-        {
-            AddToList(gameObject);
+            ItemBox.AddToList(gameObject);
         }
     }
 }

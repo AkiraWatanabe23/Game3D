@@ -10,11 +10,11 @@ public class Fade : MonoBehaviour
     [Tooltip("実行時間")]
     [SerializeField] private float _fadeTime = 1f;
 
-    private static Fade instance = null;
+    private static Fade _instance = null;
 
     private void Awake()
     {
-        instance = this;
+        _instance = this;
     }
 
     private void Start()
@@ -24,12 +24,12 @@ public class Fade : MonoBehaviour
 
     public static void StartFadeIn(Action action = null)
     {
-        instance.StartCoroutine(instance.FadeIn(action));
+        _instance.StartCoroutine(_instance.FadeIn(action));
     }
 
     public static void StartFadeOut(Action action = null)
     {
-        instance.StartCoroutine(instance.FadeOut(action));
+        _instance.StartCoroutine(_instance.FadeOut(action));
     }
 
     private IEnumerator FadeIn(Action action = null)
