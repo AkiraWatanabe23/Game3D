@@ -26,6 +26,8 @@ public class EnemyController : MonoBehaviour
 
         if (_agent != null) Debug.Log("aruno");
         else Debug.Log("naino");
+
+        _agent.SetDestination(_movePos[0].position);
     }
 
     private void Update()

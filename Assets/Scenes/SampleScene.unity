@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 6a37a3c6d3043e445a6bf42ca1799ae5, type: 2}
 --- !u!1 &29610381
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9560
+  m_Name: pb_Mesh24274
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -24732,7 +24732,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!64 &1357920127
 MeshCollider:
@@ -32933,7 +32933,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -32956,7 +32956,6 @@ MonoBehaviour:
   _movePos:
   - {fileID: 807362525}
   - {fileID: 1562634690}
-  _target: {fileID: 0}
 --- !u!43 &1498730241
 Mesh:
   m_ObjectHideFlags: 0
