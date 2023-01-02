@@ -10,15 +10,15 @@ public class StatusUpItem : ItemBase
         //ステータスを向上させる(テスト)
         if (_status == StatusType.MOVE)
         {
-            PlayerMove.MoveSpeed += 5;
+            //PlayerMove.MoveSpeed += 5;
         }
         else if (_status == StatusType.JUMP)
         {
-            PlayerMove.JumpPower += 5;
+            //PlayerMove.JumpPower += 5;
         }
         else if (_status == StatusType.HP)
         {
-            PlayerHealth.MaxHp += 10;
+            //PlayerHealth.MaxHp += 10;
         }
     }
 

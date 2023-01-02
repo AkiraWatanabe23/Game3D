@@ -7,13 +7,13 @@ public class HealItem : ItemBase
 
     protected override void TouchPlayer(GameObject go)
     {
-        PlayerHealth.HP += _healValue;
+        //PlayerHealth.HP += _healValue;
 
         //最大値を越えないようにする
-        if (PlayerHealth.HP >= PlayerHealth.MaxHp)
-        {
-            PlayerHealth.HP = PlayerHealth.MaxHp;
-        }
+        //if (PlayerHealth.HP >= PlayerHealth.MaxHp)
+        //{
+        //    PlayerHealth.HP = PlayerHealth.MaxHp;
+        //}
     }
 
     private void OnTriggerEnter(Collider other)

@@ -4,12 +4,12 @@
 public class PlayerHealth
 {
     [Header("体力系ステータス")]
-    [SerializeField] private static int _hp = 100;
+    [SerializeField] private int _hp = 100;
 
-    private static int _maxHp = 0;
+    private int _maxHp = 0;
 
-    public static int HP { get => _hp; set => _hp = value; }
-    public static int MaxHp { get => _maxHp; set => _maxHp = value; }
+    public int HP { get => _hp; set => _hp = value; }
+    public int MaxHp { get => _maxHp; set => _maxHp = value; }
 
     public void Init()
     {

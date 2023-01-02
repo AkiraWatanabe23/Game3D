@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerMove
 {
     [Header("移動系ステータス")]
-    [SerializeField] private static float _moveSpeed = 1f;
-    [SerializeField] private static float _jumpPower = 1f;
+    [SerializeField] private float _moveSpeed = 1f;
+    [SerializeField] private float _jumpPower = 1f;
     [SerializeField] private bool _isGround = false;
 
     private Rigidbody _rb;
 
-    public static float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
-    public static float JumpPower { get => _jumpPower; set => _jumpPower = value; }
+    public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
+    public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
 
     public void Init(Rigidbody rb)
     {

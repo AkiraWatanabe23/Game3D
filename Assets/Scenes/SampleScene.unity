@@ -32895,7 +32895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404512785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.967, y: 1.0377116, z: 0.000008940697}
+  m_LocalPosition: {x: 11.3, y: 1.0377116, z: 0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32956,6 +32956,7 @@ MonoBehaviour:
   _movePos:
   - {fileID: 807362525}
   - {fileID: 1562634690}
+  _searchAngle: 60
 --- !u!43 &1498730241
 Mesh:
   m_ObjectHideFlags: 0
@@ -33162,7 +33163,7 @@ GameObject:
   - component: {fileID: 1806381061}
   - component: {fileID: 1806381064}
   - component: {fileID: 1806381063}
-  - component: {fileID: 1806381062}
+  - component: {fileID: 1806381065}
   m_Layer: 0
   m_Name: Direction
   m_TagString: Untagged
@@ -33185,19 +33186,6 @@ Transform:
   m_Father: {fileID: 1404512789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1806381062
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806381060}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1806381063
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33248,6 +33236,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806381060}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!135 &1806381065
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: -1}
 --- !u!1 &2012741104
 GameObject:
   m_ObjectHideFlags: 0
@@ -33269,7 +33270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &2012741105
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33391,7 +33392,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movements:
+    _moveSpeed: 5
+    _jumpPower: 5
     _isGround: 0
+  _health:
+    _hp: 100
 --- !u!43 &2051191020
 Mesh:
   m_ObjectHideFlags: 0
@@ -33610,6 +33615,14 @@ PrefabInstance:
     - target: {fileID: 7298669291189173637, guid: 8fc206d7f8b98044cbd707cab64f82a2, type: 3}
       propertyPath: m_Name
       value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298669291189173637, guid: 8fc206d7f8b98044cbd707cab64f82a2, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298669291189173637, guid: 8fc206d7f8b98044cbd707cab64f82a2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc206d7f8b98044cbd707cab64f82a2, type: 3}
