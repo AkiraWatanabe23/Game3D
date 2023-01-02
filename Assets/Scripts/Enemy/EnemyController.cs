@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private Transform[] _movePos = new Transform[2];
-    [Tooltip("視界の範囲(正面から)")]
+    [Tooltip("視界の範囲")]
     [Range(0f, 180f)]
     [SerializeField] private float _searchAngle = 0f;
 
+    private GameObject _player = default;
     private NavMeshAgent _agent = default;
     private EnemyState _state = EnemyState.DEFAULT;
     private int _currentMoveIndex = 0;
@@ -37,15 +38,14 @@ public class EnemyController : MonoBehaviour
             SwitchTarget();
         }
 
-        //もしPlayerを追跡している状態なら
         if (_state == EnemyState.CHASE)
         {
-            //TODO：Playerの位置を常にEnemyの追跡対象にする
+            _agent.SetDestination(_player.transform.position);
         }
     }
 
     /// <summary>
-    /// 追跡先を次の位置に切り替える
+    /// 進行先を次の位置に切り替える
     /// </summary>
     private void SwitchTarget()
     {
@@ -55,15 +55,20 @@ public class EnemyController : MonoBehaviour
             (_movePos[_currentMoveIndex % _movePos.Length].position);
     }
 
+    /// <summary>
+    /// Playerが視界の中に入っているか
+    /// </summary>
+    /// <param name="go"> Playerのオブジェクト </param>
     private void ChasePlayer(GameObject go)
     {
-        var posDiff = go.transform.position - gameObject.transform.position;
-        var angle = Vector3.Angle(transform.forward, posDiff);
+        var playerVec = go.transform.position - gameObject.transform.position;
+        var angle = Vector3.Angle(transform.forward, playerVec);
 
         if (angle <= _searchAngle)
         {
             Debug.Log("Find Player");
             _state = EnemyState.CHASE;
+            _player = go;
         }
     }
 
@@ -71,7 +76,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.CompareTag(Define.PLAYER_TAG))
         {
-            //TODO：Playerを発見した(視界に入った)ときになにか処理をする
+            //Playerを発見した(視界に入った)ときに追跡するようにする
             ChasePlayer(other.gameObject);
         }
     }
