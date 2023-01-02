@@ -17,7 +17,7 @@ public class PlayerMove
     public void Init(Rigidbody rb)
     {
         _rb = rb;
-        _isGround = true;
+        _isGround = false;
     }
 
     public void Update()

@@ -9,12 +9,15 @@ public class EnemyController : MonoBehaviour
     [Tooltip("視界の範囲")]
     [Range(0f, 180f)]
     [SerializeField] private float _searchAngle = 0f;
+    [Tooltip("何秒経ったらPlayerの追跡をやめるか")]
+    [SerializeField] private float _stopChaseTime = 1f;
 
     private GameObject _player = default;
     private NavMeshAgent _agent = default;
     private EnemyState _state = EnemyState.DEFAULT;
     private int _currentMoveIndex = 0;
     private float _moveSpeed = 0f;
+    private float _chaseTime = 0f;
 
     public Transform[] MovePos => _movePos;
     public NavMeshAgent Agent => _agent;
@@ -38,9 +41,19 @@ public class EnemyController : MonoBehaviour
             SwitchTarget();
         }
 
+        //Playerを追跡対象に設定
         if (_state == EnemyState.CHASE)
         {
+            _chaseTime += Time.deltaTime;
             _agent.SetDestination(_player.transform.position);
+
+            //一定時間経ったら追跡をやめて、元の場所に戻る
+            if (_chaseTime <= _stopChaseTime)
+            {
+                _state = EnemyState.MOVE;
+                _agent.SetDestination
+                    (_movePos[_currentMoveIndex % _movePos.Length].position);
+            }
         }
     }
 
