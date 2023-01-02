@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986e49adf997c9c4180759ccb0d5495e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pauseKey: 304
   _closeKey: 27
   _spawnPos:
   - {fileID: 0}

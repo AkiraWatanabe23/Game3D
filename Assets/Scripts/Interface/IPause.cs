@@ -1,8 +1,8 @@
-public interface IPause
+﻿public interface IPause
 {
-    /// <summary> �ꎞ��~ </summary>
+    /// <summary> 一時停止 </summary>
     public void Pause();
 
-    /// <summary> �ĊJ </summary>
+    /// <summary> 再開 </summary>
     public void Resume();
 }
