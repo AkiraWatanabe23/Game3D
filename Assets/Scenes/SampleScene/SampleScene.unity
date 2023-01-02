@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 791725078}
   - component: {fileID: 791725079}
   m_Layer: 0
-  m_Name: CinemaChine
+  m_Name: Cinemachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
