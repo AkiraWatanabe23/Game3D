@@ -269,7 +269,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472649331
 GameObject:
@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 490507080}
   - component: {fileID: 490507079}
   - component: {fileID: 490507081}
+  - component: {fileID: 490507082}
   m_Layer: 5
   m_Name: ManualPanel
   m_TagString: Untagged
@@ -542,9 +543,9 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534990362}
-        m_TargetAssemblyTypeName: Fade, Assembly-CSharp
-        m_MethodName: StartFadeOut
+      - m_Target: {fileID: 490507082}
+        m_TargetAssemblyTypeName: SceneLoaders, Assembly-CSharp
+        m_MethodName: LoadToScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -554,6 +555,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &490507082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490507077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db213e728fe29ca47ab4d3ee6ead3daf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nextScene: 2
 --- !u!1 &534990361
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +612,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745725447
 GameObject:

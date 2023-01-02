@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Consts;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -6,9 +7,25 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneLoaders : MonoBehaviour
 {
-    //シーン名を引数に渡し、遷移する
-    public static void SceneLoad(string sceneName)
+    [Tooltip("遷移先のシーン")]
+    [SerializeField] private SceneNames _nextScene = SceneNames.DEFAULT;
+
+    /// <summary>
+    /// フェードアウト -> シーン遷移
+    /// </summary>
+    /// <param name="sceneName"> 遷移先のシーン名 </param>
+    public static void PassToLoad(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        Fade.StartFadeOut
+            (() => SceneManager.LoadScene(sceneName));
+    }
+
+    /// <summary>
+    /// フェードアウト -> シーン遷移
+    /// (シーン上のPanel,Button等に設定)
+    /// </summary>
+    public void LoadToScene()
+    {
+        PassToLoad(Define.Scenes[_nextScene]);
     }
 }

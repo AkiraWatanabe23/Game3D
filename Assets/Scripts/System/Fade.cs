@@ -1,9 +1,7 @@
-﻿using Consts;
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Fade : MonoBehaviour
 {
@@ -12,28 +10,11 @@ public class Fade : MonoBehaviour
     [Tooltip("実行時間")]
     [SerializeField] private float _fadeTime = 1f;
 
-    /// <summary> 遷移先のシーン名 </summary>
-    private static string _moveSceneName = default;
-
-    public static string MoveSceneName => _moveSceneName;
+    private static Fade instance = null;
 
     private void Awake()
     {
-        //現在のシーン名を取得
-        _moveSceneName = SceneManager.GetActiveScene().name;
-        //次にどのシーンに遷移するのかを決定する(問題点：シーンの流れが固定になる...)
-        if (_moveSceneName == Define.Scenes[SceneNames.TITLE_NAME])
-        {
-            _moveSceneName = Define.Scenes[SceneNames.INGAME_NAME];
-        }
-        else if (_moveSceneName == Define.Scenes[SceneNames.INGAME_NAME])
-        {
-            _moveSceneName = Define.Scenes[SceneNames.RESULT_NAME];
-        }
-        else if (_moveSceneName == Define.Scenes[SceneNames.RESULT_NAME])
-        {
-            _moveSceneName = Define.Scenes[SceneNames.TITLE_NAME];
-        }
+        instance = this;
     }
 
     private void Start()
@@ -41,16 +22,14 @@ public class Fade : MonoBehaviour
         StartFadeIn();
     }
 
-    public void StartFadeIn()
+    public static void StartFadeIn(Action action = null)
     {
-        StartCoroutine(FadeIn());
+        instance.StartCoroutine(instance.FadeIn(action));
     }
 
-    public void StartFadeOut()
+    public static void StartFadeOut(Action action = null)
     {
-        //フェードアウト→シーン遷移
-        StartCoroutine(FadeOut(
-                () => SceneLoaders.SceneLoad(_moveSceneName)));
+        instance.StartCoroutine(instance.FadeOut(action));
     }
 
     private IEnumerator FadeIn(Action action = null)
