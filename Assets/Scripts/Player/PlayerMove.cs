@@ -22,6 +22,7 @@ public class PlayerMove
 
     public void Update()
     {
+        //TODO：Playerが進行方向をすぐに向くようにする
         float hol = Input.GetAxisRaw("Horizontal");
         float ver = Input.GetAxisRaw("Vertical");
 
