@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         var rb = GetComponent<Rigidbody>();
-        _movements.Init(rb);
+        _movements.Init(transform, rb);
         _health.Init();
     }
 

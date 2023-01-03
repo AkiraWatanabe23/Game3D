@@ -33109,6 +33109,7 @@ MonoBehaviour:
   - {fileID: 1562634690}
   _searchAngle: 60
   _stopChaseTime: 0
+  _isPause: 0
 --- !u!43 &1498730241
 Mesh:
   m_ObjectHideFlags: 0

@@ -12,13 +12,16 @@ public class PlayerMove : IPause
     [Header("テスト用")]
     [SerializeField] private bool _isPause = false;
 
+    private Transform _trans;
     private Rigidbody _rb;
+    private float _rotateSpeed = 0.2f;
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
 
-    public void Init(Rigidbody rb)
+    public void Init(Transform trans, Rigidbody rb)
     {
+        _trans = trans;
         _rb = rb;
         _isGround = false;
     }
@@ -49,6 +52,20 @@ public class PlayerMove : IPause
 
             _rb.velocity =
                 new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+
+            //オブジェクトの回転
+            //if (_rb.velocity.magnitude >= 0)
+            //{
+            //    //transform.rotation = Quaternion.Slerp
+            //    //    (transform.rotation,
+            //    //     Quaternion.LookRotation(_rb.velocity),
+            //    //     _rotateSpeed);
+
+            //    _trans.rotation = Quaternion.Slerp
+            //        (_trans.rotation,
+            //         Quaternion.LookRotation(_rb.velocity),
+            //         _rotateSpeed);
+            //}
         }
     }
 
