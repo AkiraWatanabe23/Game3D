@@ -6,9 +6,9 @@ public class ItemBox : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _itemList = new();
 
-    [HideInInspector] private StealthItem _stealth = default;
-    [HideInInspector] private HealItem _heal = default;
-    [HideInInspector] private StatusUpItem _status = default;
+    private StealthItem _stealth = default;
+    private HealItem _heal = default;
+    private StatusUpItem _status = default;
 
     private ItemType _type = ItemType.DEFAULT;
     private static ItemBox _instance = default;
@@ -31,6 +31,12 @@ public class ItemBox : MonoBehaviour
         {
             if (_itemList?.Count > 0)
                 DisposeToList(_itemList[0]);
+        }
+        //テスト用(アイテム使用)
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (_itemList?.Count > 0)
+                UseItem(_itemList[0]);
         }
     }
 
@@ -58,25 +64,24 @@ public class ItemBox : MonoBehaviour
     /// UIでアイテムを選択したときに実行する
     /// </summary>
     /// <param name="item"> アイテムの種類 </param>
-    public void UseItem(ItemType item)
+    public void UseItem(GameObject item)
     {
+        var type = item.GetComponent<ItemBase>().Type;
+        var parent = transform.parent.gameObject;
+
         //アイテムを使うとき、以下の関数を呼び出す(テスト)
-        switch (item)
+        switch (type)
         {
             case ItemType.STEALTH:
-                _stealth.UseItem(gameObject);
+                _stealth.UseItem(parent);
                 break;
             case ItemType.HEAL:
-                _heal.UseItem(gameObject);
+                _heal.UseItem(parent);
                 break;
             case ItemType.STATUSUP:
-                _status.UseItem(gameObject);
+                _status.UseItem(parent);
                 break;
         }
-    }
-
-    public static void UseItem(GameObject item)
-    {
         _instance.ItemList.Remove(item);
         Debug.Log($"{item.name} を使用し、アイテムボックスから消費します。");
     }

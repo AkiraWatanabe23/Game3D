@@ -1,6 +1,4 @@
 ﻿using Consts;
-using System;
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -9,8 +7,12 @@ using UnityEngine;
 /// </summary>
 public class ItemBase : MonoBehaviour
 {
+    [Tooltip("このアイテムの種類")]
+    [SerializeField] private ItemType _type = ItemType.DEFAULT;
     [Tooltip("効果の有効時間")]
     [SerializeField] private float _validTime = 0f;
+
+    public ItemType Type => _type;
 
     private void OnTriggerEnter(Collider other)
     {
