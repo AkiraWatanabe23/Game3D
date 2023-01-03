@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(ItemBase))]
+[CustomEditor(typeof(ItemBox))]
 public class InspectorEditor : Editor
 {
     public override void OnInspectorGUI()
@@ -12,17 +12,5 @@ public class InspectorEditor : Editor
         base.OnInspectorGUI();
 
         ItemBase instance = target as ItemBase;
-
-        switch (instance.Type)
-        {
-            case ItemType.STEALTH:
-                //instance.Stealth = 
-                //    EditorGUILayout.EnumMaskField(instance.Type, instance.Stealth);
-                break;
-            case ItemType.HEAL:
-                break;
-            case ItemType.STATUSUP:
-                break;
-        }
     }
 }

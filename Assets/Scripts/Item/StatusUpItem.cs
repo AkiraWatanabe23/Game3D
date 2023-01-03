@@ -14,26 +14,26 @@ public class StatusUpItem
         //ステータスを向上させる(テスト)
         if (_status == StatusType.MOVE)
         {
-            //PlayerMove.MoveSpeed += 5;
+            //TODO：Playerの移動速度up
         }
         else if (_status == StatusType.JUMP)
         {
-            //PlayerMove.JumpPower += 5;
+            //TODO：Playerのジャンプ力up
         }
         else if (_status == StatusType.HP)
         {
-            //PlayerHealth.MaxHp += 10;
+            //TODO：PlayerのHP上限up -> UIに反映
         }
     }
 
     public enum StatusType
     {
         DEFAULT,
-        /// <summary> 移動速度UP </summary>
+        /// <summary> 移動速度up </summary>
         MOVE,
-        /// <summary> ジャンプ力UP </summary>
+        /// <summary> ジャンプ力up </summary>
         JUMP,
-        /// <summary> HP上限UP </summary>
+        /// <summary> HP上限up </summary>
         HP,
     }
 }
