@@ -7,7 +7,12 @@ using UnityEngine;
 /// </summary>
 public abstract class ItemBase : MonoBehaviour
 {
+    [Tooltip("効果の有効時間")]
+    [SerializeField] private float _validTime = 0f;
+
     private Rigidbody _rb;
+
+    public float ValidTime => _validTime;
 
     private void Start()
     {
