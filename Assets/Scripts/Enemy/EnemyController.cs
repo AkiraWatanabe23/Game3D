@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour, IPause
     [SerializeField] private float _stopChaseTime = 1f;
 
     [Header("テスト用")]
-    [Tooltip("Pauseのテスト")]
     [SerializeField] private bool _isPause = false;
 
     private GameObject _player = default;
@@ -55,7 +54,7 @@ public class EnemyController : MonoBehaviour, IPause
             SwitchTarget();
         }
 
-        //Playerを追跡対象に設定
+        //Playerを追跡する
         if (_state == EnemyState.CHASE)
         {
             _chaseTime += Time.deltaTime;

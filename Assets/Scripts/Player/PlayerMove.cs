@@ -10,7 +10,6 @@ public class PlayerMove : IPause
     [SerializeField] private bool _isGround = false;
 
     [Header("テスト用")]
-    [Tooltip("Pauseのテスト")]
     [SerializeField] private bool _isPause = false;
 
     private Rigidbody _rb;
@@ -63,14 +62,11 @@ public class PlayerMove : IPause
 
     public void Pause()
     {
-        //TODO：Pause処理
-        //入力を受け付けなくする
-        _rb.isKinematic = true;
+        _rb.isKinematic = true; //物理演算を行わない
     }
 
     public void Resume()
     {
-        //TODO：再開
         _rb.isKinematic = false;
     }
 }

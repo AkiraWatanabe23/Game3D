@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour, IPause
     [SerializeField] private GameObject _playerPrefab;
 
     [Header("テスト用")]
-    [Tooltip("無敵状態")]
     [SerializeField] private static bool _isGodMode = false;
-    [Tooltip("Pause状態")]
     [SerializeField] private bool _isPause = false;
 
     private static float _timer = 0f;
@@ -25,7 +23,7 @@ public class GameManager : MonoBehaviour, IPause
 
     private void Awake()
     {
-        //もしシーンが第一階層ならタイマーをリセットする
+        //もしシーンが第一階層ならタイマーをリセットする(それ以外ではタイマーを引き継ぐ)
         if (SceneManager.GetActiveScene().name == 
             Define.Scenes[SceneNames.FF_SCENE])
         {
@@ -84,16 +82,12 @@ public class GameManager : MonoBehaviour, IPause
 
     public void Pause()
     {
-        //TODO：一時停止処理の記述
-        //一時停止するもの
-        //->制限時間
         _isPause = true;
         Debug.Log("Pause");
     }
 
     public void Resume()
     {
-        //TODO：処理再開の記述
         _isPause = false;
         Debug.Log("Resume");
     }
