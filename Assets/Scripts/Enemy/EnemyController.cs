@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour, IPause
             _agent.SetDestination(_player.transform.position);
 
             //一定時間経ったら追跡をやめて、元の場所に戻る
-            if (_chaseTime <= _stopChaseTime)
+            if (_chaseTime >= _stopChaseTime)
             {
                 _state = EnemyState.MOVE;
                 _agent.SetDestination

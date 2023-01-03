@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Playerの各機能をまとめたもの
@@ -13,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         var rb = GetComponent<Rigidbody>();
+
         _movements.Init(transform, rb);
         _health.Init();
     }

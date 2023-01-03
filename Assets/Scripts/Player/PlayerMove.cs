@@ -1,5 +1,4 @@
-﻿using Consts;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class PlayerMove : IPause
@@ -7,13 +6,13 @@ public class PlayerMove : IPause
     [Header("移動系ステータス")]
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
+    [SerializeField] private float _rotateSpeed = 0.5f;
 
     [Header("テスト用")]
     [SerializeField] private bool _isPause = false;
 
     private Transform _trans;
     private Rigidbody _rb;
-    private float _rotateSpeed = 0.5f;
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
@@ -62,7 +61,7 @@ public class PlayerMove : IPause
 
     public void Pause()
     {
-        _rb.isKinematic = true; //物理演算を行わない
+        _rb.isKinematic = true;
     }
 
     public void Resume()
