@@ -6,15 +6,12 @@ public class ItemBox : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _itemList = new();
 
-    private StealthItem _stealth = default;
-    private HealItem _heal = default;
-    private StatusUpItem _status = default;
-
-    private ItemType _type = ItemType.DEFAULT;
+    private readonly StealthItem _stealth = default;
+    private readonly HealItem _heal = default;
+    private readonly StatusUpItem _status = default;
     private static ItemBox _instance = default;
 
     public List<GameObject> ItemList { get => _itemList; set => _itemList = value; }
-    public ItemType Type => _type;
     public StealthItem Stealth => _stealth;
     public HealItem Heal => _heal;
     public StatusUpItem Status => _status;
@@ -66,11 +63,10 @@ public class ItemBox : MonoBehaviour
     /// <param name="item"> アイテムの種類 </param>
     public void UseItem(GameObject item)
     {
-        var type = item.GetComponent<ItemBase>().Type;
         var parent = transform.parent.gameObject;
 
         //アイテムを使うとき、以下の関数を呼び出す(テスト)
-        switch (type)
+        switch (item.GetComponent<ItemBase>()?.Type)
         {
             case ItemType.STEALTH:
                 _stealth.UseItem(parent);
@@ -82,7 +78,7 @@ public class ItemBox : MonoBehaviour
                 _status.UseItem(parent);
                 break;
         }
-        _instance.ItemList.Remove(item);
+        _itemList.Remove(item);
         Debug.Log($"{item.name} を使用し、アイテムボックスから消費します。");
     }
 }

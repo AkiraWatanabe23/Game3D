@@ -14,6 +14,11 @@ public class ItemBase : MonoBehaviour
 
     public ItemType Type => _type;
 
+    private void Start()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag(Define.PLAYER_TAG))
