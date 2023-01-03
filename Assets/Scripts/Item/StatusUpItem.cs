@@ -1,11 +1,15 @@
 ﻿using Consts;
 using UnityEngine;
 
-public class StatusUpItem : ItemBase
+/// <summary>
+/// Playerのステータスを向上させるアイテム
+/// </summary>
+[System.Serializable]
+public class StatusUpItem
 {
     [SerializeField] private StatusType _status = StatusType.DEFAULT;
 
-    protected override void UseItem(GameObject go)
+    public void UseItem(GameObject go)
     {
         //ステータスを向上させる(テスト)
         if (_status == StatusType.MOVE)
@@ -19,14 +23,6 @@ public class StatusUpItem : ItemBase
         else if (_status == StatusType.HP)
         {
             //PlayerHealth.MaxHp += 10;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(Define.PLAYER_TAG))
-        {
-            ItemBox.AddToList(gameObject);
         }
     }
 

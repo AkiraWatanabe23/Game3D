@@ -26,7 +26,6 @@ namespace Consts
 
     /// <summary>
     /// シーン名のenum
-    /// (シーン数が増えた場合、この要素を増やし、Dictionaryに要素を追加することで対応)
     /// </summary>
     public enum SceneNames
     {
@@ -38,6 +37,9 @@ namespace Consts
         RESULT_SCENE,
     }
 
+    /// <summary>
+    /// アイテムの種類をまとめたenum
+    /// </summary>
     public enum ItemType
     {
         DEFAULT,

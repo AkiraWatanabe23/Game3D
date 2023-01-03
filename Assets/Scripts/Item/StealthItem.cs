@@ -2,21 +2,14 @@
 using UnityEngine;
 
 /// <summary>
-/// Playerをステルス状態にして敵に見つからなくする
+/// Playerをステルス状態にして敵に見つからなくするアイテム
 /// </summary>
-public class StealthItem : ItemBase
+[System.Serializable]
+public class StealthItem
 {
-    private float _stealthTime = 1f;
+    [SerializeField] private float _stealthTime = 1f;
 
-    private void Update()
-    {
-        if (_stealthTime >= ValidTime)
-        {
-            //TODO：一定時間経ったらステルス状態を解除する
-        }
-    }
-
-    protected override void UseItem(GameObject go)
+    public void UseItem(GameObject go)
     {
         //↓Playerをステルス状態にする
         go.tag = Define.STEALTH_TAG;
