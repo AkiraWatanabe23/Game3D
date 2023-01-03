@@ -27,12 +27,4 @@ public class StealthItem : ItemBase
         color.a = alpha;
         go.GetComponent<MeshRenderer>().material.color = color;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag(Define.PLAYER_TAG))
-        {
-            ItemBox.AddToList(gameObject);
-        }
-    }
 }
