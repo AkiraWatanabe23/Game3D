@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour, IPause
     [Tooltip("何秒経ったらPlayerの追跡をやめるか")]
     [SerializeField] private float _stopChaseTime = 1f;
 
+    [Header("テスト用")]
+    [Tooltip("Pauseのテスト")]
+    [SerializeField] private bool _isPause = false;
+
     private GameObject _player = default;
     private NavMeshAgent _agent = default;
     private EnemyState _state = EnemyState.DEFAULT;
@@ -33,8 +37,18 @@ public class EnemyController : MonoBehaviour, IPause
         _agent.SetDestination(_movePos[0].position);
     }
 
+    [System.Obsolete]
     private void Update()
     {
+        if (_isPause)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
+
         //指定の箇所を行ったり来たりするようにする
         if (_agent.remainingDistance <= _agent.stoppingDistance)
         {
@@ -94,15 +108,19 @@ public class EnemyController : MonoBehaviour, IPause
         }
     }
 
+    [System.Obsolete]
     public void Pause()
     {
         //TODO：一時停止処理の記述
         //移動、探索を停止する
+        _agent.Stop();
     }
 
+    [System.Obsolete]
     public void Resume()
     {
         //TODO：処理再開の記述
+        _agent.Resume();
     }
 
     public enum EnemyState
