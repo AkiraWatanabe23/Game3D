@@ -63,10 +63,10 @@ public class ItemBox : MonoBehaviour
     /// <param name="item"> アイテムの種類 </param>
     public void UseItem(GameObject item)
     {
-        var parent = transform.parent.gameObject;
+        var parent = gameObject.transform.parent.gameObject;
 
         //アイテムを使うとき、以下の関数を呼び出す(テスト)
-        switch (item.GetComponent<ItemBase>()?.Type)
+        switch (item.GetComponent<ItemBase>().Type)
         {
             case ItemType.STEALTH:
                 _stealth.UseItem(parent);
