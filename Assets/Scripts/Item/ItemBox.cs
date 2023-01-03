@@ -6,9 +6,9 @@ public class ItemBox : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _itemList = new();
 
-    private readonly StealthItem _stealth = default;
-    private readonly HealItem _heal = default;
-    private readonly StatusUpItem _status = default;
+    [SerializeField] private StealthItem _stealth = default;
+    [SerializeField] private HealItem _heal = default;
+    [SerializeField] private StatusUpItem _status = default;
     private static ItemBox _instance = default;
 
     public List<GameObject> ItemList { get => _itemList; set => _itemList = value; }
