@@ -2,12 +2,16 @@
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerMove
+public class PlayerMove : IPause
 {
     [Header("移動系ステータス")]
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
     [SerializeField] private bool _isGround = false;
+
+    [Header("テスト用")]
+    [Tooltip("Pauseのテスト")]
+    [SerializeField] private bool _isPause = false;
 
     private Rigidbody _rb;
 
@@ -22,19 +26,31 @@ public class PlayerMove
 
     public void Update()
     {
-        //TODO：Playerが進行方向をすぐに向くようにする
-        float hol = Input.GetAxisRaw("Horizontal");
-        float ver = Input.GetAxisRaw("Vertical");
-
-        float y = _rb.velocity.y;
-        if (Input.GetButtonDown("Jump") && _isGround)
+        if (_isPause)
         {
-            y = _jumpPower;
-            _isGround = false;
+            Pause();
+        }
+        else
+        {
+            Resume();
         }
 
-        _rb.velocity = 
-            new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+        if (!_rb.isKinematic)
+        {
+            //TODO：Playerが進行方向をすぐに向くようにする
+            float hol = Input.GetAxisRaw("Horizontal");
+            float ver = Input.GetAxisRaw("Vertical");
+
+            float y = _rb.velocity.y;
+            if (Input.GetButtonDown("Jump") && _isGround)
+            {
+                y = _jumpPower;
+                _isGround = false;
+            }
+
+            _rb.velocity =
+                new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -43,5 +59,18 @@ public class PlayerMove
         {
             _isGround = true;
         }
+    }
+
+    public void Pause()
+    {
+        //TODO：Pause処理
+        //入力を受け付けなくする
+        _rb.isKinematic = true;
+    }
+
+    public void Resume()
+    {
+        //TODO：再開
+        _rb.isKinematic = false;
     }
 }

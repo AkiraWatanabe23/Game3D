@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour, IPause
 {
-    [Tooltip("テスト用の無敵状態")]
-    [SerializeField] private static bool _isGodMode = false;
     [Tooltip("一時停止するキー")]
     [SerializeField] private KeyCode _pauseKey;
     [Tooltip("ゲームを終了するキー")]
@@ -14,8 +12,13 @@ public class GameManager : MonoBehaviour, IPause
     [SerializeField] private Transform[] _spawnPos = new Transform[4];
     [SerializeField] private GameObject _playerPrefab;
 
+    [Header("テスト用")]
+    [Tooltip("無敵状態")]
+    [SerializeField] private static bool _isGodMode = false;
+    [Tooltip("Pause状態")]
+    [SerializeField] private bool _isPause = false;
+
     private static float _timer = 0f;
-    private bool _isPause = false;
 
     public static bool IsGodMode => _isGodMode;
     public static float Timer { get => _timer; set => _timer = value; }
@@ -34,6 +37,7 @@ public class GameManager : MonoBehaviour, IPause
 
     private void Update()
     {
+        //実行中のみカウントする
         if (!_isPause)
         {
             _timer -= Time.deltaTime;
