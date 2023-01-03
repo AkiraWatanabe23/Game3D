@@ -12,14 +12,15 @@ public class StealthItem : ItemBase
     {
         if (_stealthTime >= ValidTime)
         {
-            //一定時間経ったらステルス状態を解除する
+            //TODO：一定時間経ったらステルス状態を解除する
         }
     }
 
     protected override void UseItem(GameObject go)
     {
+        //↓Playerをステルス状態にする
         go.tag = Define.STEALTH_TAG;
-        //視覚的なステルス状態
+        //↓視覚的なステルス状態(透明度を半分まで落とす)
         float alpha = 1f;
         Color color = go.GetComponent<MeshRenderer>().material.color;
         alpha /= 2f;

@@ -15,11 +15,6 @@ public class ItemBox : MonoBehaviour
         _instance = this;
     }
 
-    private void Start()
-    {
-        
-    }
-
     private void Update()
     {
         //テスト用(アイテム削除)
@@ -30,7 +25,6 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    //TODO：アイテムを取得した時、リストが上限に達してなければ追加
     public static void AddToList(GameObject item)
     {
         if (_instance.ItemList.Count <= Define.ITEM_LIST_LIMIT)
@@ -45,18 +39,12 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// アイテムを捨て、Listから削除する
-    /// </summary>
     public static void DisposeToList(GameObject item)
     {
         _instance.ItemList.Remove(item);
         Debug.Log($"{item.name} をアイテムボックスから削除しました。");
     }
 
-    /// <summary>
-    /// 選んだアイテムを使い、Listから削除する
-    /// </summary>
     public static void UseItem(GameObject item)
     {
         //TODO：ここでアイテムを使用する関数を実行
