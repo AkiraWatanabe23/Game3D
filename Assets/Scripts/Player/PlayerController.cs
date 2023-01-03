@@ -22,9 +22,4 @@ public class PlayerController : MonoBehaviour
         _movements.Update();
         _health.Update();
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        _movements.OnTriggerEnter(other);
-    }
 }

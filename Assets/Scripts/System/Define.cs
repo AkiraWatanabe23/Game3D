@@ -10,7 +10,6 @@ namespace Consts
         public const float GAME_TIME = 10f;
 
         //タグ名
-        public const string GROUND_TAG = "Ground";
         public const string PLAYER_TAG = "Player";
         public const string STEALTH_TAG = "Stealth";
 
