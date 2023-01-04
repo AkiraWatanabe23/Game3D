@@ -748,6 +748,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e835f6b1cea39f4689e76db778d9872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _itemList: []
   _itemPanel: {fileID: 667583092}
 --- !u!1 &586437692
@@ -1132,7 +1136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &679672595
 RectTransform:
   m_ObjectHideFlags: 0

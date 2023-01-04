@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class ItemBox : MonoBehaviour
 {
+    [Tooltip("アイテムの種類")]
+    [SerializeField] private GameObject[] _items = new GameObject[3];
+    [Tooltip("Inspectorで確認する用のアイテムボックス")]
     [SerializeField] private List<GameObject> _itemList = new();
 
     [Header("テスト用")]
@@ -71,12 +74,15 @@ public class ItemBox : MonoBehaviour
         {
             case 1:
                 UseItem.StealthItem(parent);
+                useItem = _items[0];
                 break;
             case 2:
                 UseItem.HealItem(parent);
+                useItem = _items[1];
                 break;
             case 3:
                 //UseItem.StatusUpItem(parent, );
+                useItem = _items[2];
                 break;
         }
         _itemList.Remove(useItem);
