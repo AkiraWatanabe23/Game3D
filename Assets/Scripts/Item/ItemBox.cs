@@ -1,4 +1,5 @@
 ﻿using Consts;
+using Item;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,15 +7,9 @@ public class ItemBox : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _itemList = new();
 
-    [SerializeField] private StealthItem _stealth = default;
-    [SerializeField] private HealItem _heal = default;
-    [SerializeField] private StatusUpItem _status = default;
     private static ItemBox _instance = default;
 
     public List<GameObject> ItemList { get => _itemList; set => _itemList = value; }
-    public StealthItem Stealth => _stealth;
-    public HealItem Heal => _heal;
-    public StatusUpItem Status => _status;
 
     private void Awake()
     {
@@ -33,7 +28,7 @@ public class ItemBox : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             if (_itemList?.Count > 0)
-                UseItem(_itemList[0]);
+                ConsumeItem(_itemList[0]);
         }
     }
 
@@ -61,7 +56,7 @@ public class ItemBox : MonoBehaviour
     /// UIでアイテムを選択したときに実行する
     /// </summary>
     /// <param name="item"> アイテムの種類 </param>
-    public void UseItem(GameObject item)
+    public void ConsumeItem(GameObject item)
     {
         var parent = gameObject.transform.parent.gameObject;
 
@@ -69,13 +64,13 @@ public class ItemBox : MonoBehaviour
         switch (item.GetComponent<ItemBase>().Type)
         {
             case ItemType.STEALTH:
-                _stealth.UseItem(parent);
+                UseItem.StealthItem(parent);
                 break;
             case ItemType.HEAL:
-                _heal.UseItem(parent);
+                UseItem.HealItem(parent);
                 break;
             case ItemType.STATUSUP:
-                _status.UseItem(parent);
+                //UseItem.StatusUpItem(parent, );
                 break;
         }
         _itemList.Remove(item);

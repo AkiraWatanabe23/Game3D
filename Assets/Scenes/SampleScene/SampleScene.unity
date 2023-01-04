@@ -511,6 +511,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemList: []
+  _stealth:
+    _stealthTime: 1
+  _heal:
+    _healValue: 1
+  _status:
+    _status: 0
 --- !u!1 &603606910
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 2
-  _validTime: 0
+  _validTime: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
