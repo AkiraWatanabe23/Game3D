@@ -5,6 +5,8 @@ namespace Item
 {
     public static class UseItem
     {
+        private const int _healValue = 5;
+
         public static void StealthItem(GameObject go)
         {
             //↓Playerをステルス状態にする
@@ -20,6 +22,15 @@ namespace Item
 
         public static void HealItem(GameObject go)
         {
+            var health = go.GetComponent<PlayerController>().Health;
+
+            health.HP += _healValue;
+
+            if (health.HP >= health.MaxHp)
+            {
+                health.HP = health.MaxHp;
+            }
+
             //PlayerHealth.HP += _healValue;
 
             //最大値を越えないようにする
