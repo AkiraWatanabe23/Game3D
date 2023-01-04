@@ -30,14 +30,6 @@ namespace Item
             {
                 health.HP = health.MaxHp;
             }
-
-            //PlayerHealth.HP += _healValue;
-
-            //Å‘å’l‚ð‰z‚¦‚È‚¢‚æ‚¤‚É‚·‚é
-            //if (PlayerHealth.HP >= PlayerHealth.MaxHp)
-            //{
-            //    PlayerHealth.HP = PlayerHealth.MaxHp;
-            //}
         }
 
         public static void StatusUpItem(GameObject go, StatusType item)

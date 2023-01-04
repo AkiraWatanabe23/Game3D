@@ -2,10 +2,14 @@
 using Item;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemBox : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _itemList = new();
+
+    [Header("テスト用")]
+    [SerializeField] private Image _itemPanel;
 
     private static ItemBox _instance = default;
 
@@ -27,8 +31,9 @@ public class ItemBox : MonoBehaviour
         //テスト用(アイテム使用)
         if (Input.GetKeyDown(KeyCode.U))
         {
-            if (_itemList?.Count > 0)
-                ConsumeItem(_itemList[0]);
+            _itemPanel.gameObject.SetActive(true);
+            //if (_itemList?.Count > 0)
+            //    ConsumeItem(_itemList[0]);
         }
     }
 
@@ -56,24 +61,25 @@ public class ItemBox : MonoBehaviour
     /// UIでアイテムを選択したときに実行する
     /// </summary>
     /// <param name="item"> アイテムの種類 </param>
-    public void ConsumeItem(GameObject item)
+    public void ConsumeItem(int item)
     {
         var parent = gameObject.transform.parent.gameObject;
+        GameObject useItem = null;
 
         //アイテムを使うとき、以下の関数を呼び出す(テスト)
-        switch (item.GetComponent<ItemBase>().Type)
+        switch (item)
         {
-            case ItemType.STEALTH:
+            case 1:
                 UseItem.StealthItem(parent);
                 break;
-            case ItemType.HEAL:
+            case 2:
                 UseItem.HealItem(parent);
                 break;
-            case ItemType.STATUSUP:
+            case 3:
                 //UseItem.StatusUpItem(parent, );
                 break;
         }
-        _itemList.Remove(item);
-        Debug.Log($"{item.name} を使用し、アイテムボックスから消費します。");
+        _itemList.Remove(useItem);
+        Debug.Log($"{useItem.name} を使用し、アイテムボックスから消費します。");
     }
 }
