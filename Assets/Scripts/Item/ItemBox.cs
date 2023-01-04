@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ItemBox : MonoBehaviour
 {
+    //TODO：アイテムのプレハブをつくり、以下の配列に入れる
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [Tooltip("Inspectorで確認する用のアイテムボックス")]
@@ -28,15 +29,12 @@ public class ItemBox : MonoBehaviour
         //テスト用(アイテム削除)
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (_itemList?.Count > 0)
-                DisposeToList(_itemList[0]);
+            DisposeToList(_itemList[0]);
         }
         //テスト用(アイテム使用)
         if (Input.GetKeyDown(KeyCode.U))
         {
             _itemPanel.gameObject.SetActive(true);
-            //if (_itemList?.Count > 0)
-            //    ConsumeItem(_itemList[0]);
         }
     }
 
@@ -56,8 +54,15 @@ public class ItemBox : MonoBehaviour
 
     public static void DisposeToList(GameObject item)
     {
-        _instance.ItemList.Remove(item);
-        Debug.Log($"{item.name} をアイテムボックスから削除しました。");
+        if (_instance.ItemList?.Count > 0)
+        {
+            _instance.ItemList.Remove(item);
+            Debug.Log($"{item.name} をアイテムボックスから削除しました。");
+        }
+        else
+        {
+            Debug.LogWarning("アイテムボックスが空です。");
+        }
     }
 
     /// <summary>
@@ -69,23 +74,30 @@ public class ItemBox : MonoBehaviour
         var parent = gameObject.transform.parent.gameObject;
         GameObject useItem = null;
 
-        //アイテムを使うとき、以下の関数を呼び出す(テスト)
-        switch (item)
+        if (_itemList?.Count > 0)
         {
-            case 1:
-                UseItem.StealthItem(parent);
-                useItem = _items[0];
-                break;
-            case 2:
-                UseItem.HealItem(parent);
-                useItem = _items[1];
-                break;
-            case 3:
-                //UseItem.StatusUpItem(parent, );
-                useItem = _items[2];
-                break;
+            //アイテムを使うとき、以下の処理を呼び出す(テスト)
+            switch (item)
+            {
+                case 1:
+                    UseItem.StealthItem(parent);
+                    useItem = _items[0];
+                    break;
+                case 2:
+                    UseItem.HealItem(parent);
+                    useItem = _items[1];
+                    break;
+                case 3:
+                    //UseItem.StatusUpItem(parent, );
+                    useItem = _items[2];
+                    break;
+            }
+            _itemList.Remove(useItem);
+            Debug.Log($"{useItem.name} を使用し、アイテムボックスから消費します。");
         }
-        _itemList.Remove(useItem);
-        Debug.Log($"{useItem.name} を使用し、アイテムボックスから消費します。");
+        else
+        {
+            Debug.LogWarning("アイテムボックスが空です。");
+        }
     }
 }
