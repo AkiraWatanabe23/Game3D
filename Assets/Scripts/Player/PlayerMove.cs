@@ -23,7 +23,7 @@ public class PlayerMove : IPause
         _rb = rb;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (_isPause)
         {
