@@ -46,19 +46,27 @@ public class PlayerMove : IPause
                 y = _jumpPower;
             }
 
-            _rb.velocity =
-                new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
-
             //以下の書き方だと、入力が入ったらすぐにその方向を向く → ゆっくりにしたい
-            if (hol != 0)
+            Vector3 moveDir = Vector3.forward * ver + Vector3.right * hol;
+            moveDir = Camera.main.transform.TransformDirection(moveDir);
+            moveDir.y = 0;
+
+            Vector3 forward = _rb.velocity;
+            forward.y = 0;
+
+            //if (moveDir != Vector3.zero)
+            //{
+            //    _trans.forward = moveDir;
+            //}
+            if (forward != Vector3.zero)
             {
-                _trans.rotation = Quaternion.LookRotation(Vector3.right * hol, Vector3.up);
+                _trans.forward = forward;
             }
 
-            if (ver != 0)
-            {
-                _trans.rotation = Quaternion.LookRotation(Vector3.forward * ver, Vector3.up);
-            }
+            //_rb.velocity =
+            //new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+            //moveDir.normalized * _moveSpeed + Vector3.up * y;
+            _rb.AddForce(moveDir.normalized * _moveSpeed + Vector3.up * y, ForceMode.Force);
         }
     }
 
