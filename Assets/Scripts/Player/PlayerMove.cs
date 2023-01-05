@@ -46,16 +46,19 @@ public class PlayerMove : IPause
                 y = _jumpPower;
             }
 
-            //if (_rb.velocity.magnitude >= 0)
-            //{
-            //    _trans.rotation = Quaternion.Slerp
-            //        (_trans.rotation,
-            //         Quaternion.LookRotation(_rb.velocity),
-            //         _rotateSpeed);
-            //}
-
             _rb.velocity =
                 new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+
+            //以下の書き方だと、入力が入ったらすぐにその方向を向く → ゆっくりにしたい
+            if (hol != 0)
+            {
+                _trans.rotation = Quaternion.LookRotation(Vector3.right * hol, Vector3.up);
+            }
+
+            if (ver != 0)
+            {
+                _trans.rotation = Quaternion.LookRotation(Vector3.forward * ver, Vector3.up);
+            }
         }
     }
 
