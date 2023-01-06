@@ -4,6 +4,7 @@
 public class PlayerMove : IPause
 {
     [Header("移動系ステータス")]
+    [SerializeField] private MoveType _move = MoveType.DEFAULT;
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
     [SerializeField] private float _rotateSpeed = 0.5f;
@@ -56,20 +57,39 @@ public class PlayerMove : IPause
             Vector3 forward = _rb.velocity;
             forward.y = 0;
 
-            //if (moveDir != Vector3.zero)
-            //{
-            //    _trans.forward = moveDir;
-            //}
-            if (forward != Vector3.zero)
+            if (_move == MoveType.FORCE)
             {
-                _trans.forward = forward;
-            }
-        }
+                if (forward != Vector3.zero)
+                {
+                    _trans.forward = forward;
+                }
 
-        //_rb.velocity =
-        //new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
-        //moveDir.normalized * _moveSpeed + Vector3.up * y;
-        _rb.AddForce(moveDir.normalized * _moveSpeed + Vector3.up * y, ForceMode.Force);
+                _rb.AddForce(moveDir.normalized * _moveSpeed + Vector3.up * y, ForceMode.Force);
+            }
+            else
+            {
+                if (moveDir != Vector3.zero)
+                {
+                    _trans.forward = moveDir;
+                }
+
+                if (_move == MoveType.VELO_ONE)
+                {
+                    _rb.velocity =
+                        new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+                }
+                else if (_move == MoveType.VELO_TWO)
+                {
+                    _rb.velocity = moveDir.normalized * _moveSpeed + Vector3.up * y;
+                }
+            }
+
+            float minAngle = 0f;
+            float maxAngle = 90f;
+
+            float objAngle = Mathf.LerpAngle(minAngle, maxAngle, Time.time);
+            _trans.eulerAngles = new Vector3(0, objAngle, 0);
+        }
     }
 
     public void Pause()
@@ -82,8 +102,14 @@ public class PlayerMove : IPause
         _rb.isKinematic = false;
     }
 
+    /// <summary>
+    /// Rigidbodyを用いた移動方法の選択
+    /// </summary>
     private enum MoveType
     {
-
+        DEFAULT,
+        FORCE,
+        VELO_ONE,
+        VELO_TWO,
     }
 }
