@@ -13,6 +13,9 @@ public class PlayerMove : IPause
 
     private Transform _trans;
     private Rigidbody _rb;
+    private Vector3 moveDir = default;
+    private float y = default;
+
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
@@ -22,7 +25,7 @@ public class PlayerMove : IPause
         _trans = trans;
         _rb = rb;
     }
-
+    
     public void FixedUpdate()
     {
         if (_isPause)
@@ -40,14 +43,13 @@ public class PlayerMove : IPause
             float hol = Input.GetAxisRaw("Horizontal");
             float ver = Input.GetAxisRaw("Vertical");
 
-            float y = _rb.velocity.y;
+            y = _rb.velocity.y;
             if (Input.GetButtonDown("Jump") && y == 0f)
             {
                 y = _jumpPower;
             }
 
-            //以下の書き方だと、入力が入ったらすぐにその方向を向く → ゆっくりにしたい
-            Vector3 moveDir = Vector3.forward * ver + Vector3.right * hol;
+            moveDir = Vector3.forward * ver + Vector3.right * hol;
             moveDir = Camera.main.transform.TransformDirection(moveDir);
             moveDir.y = 0;
 
@@ -62,12 +64,12 @@ public class PlayerMove : IPause
             {
                 _trans.forward = forward;
             }
-
-            //_rb.velocity =
-            //new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
-            //moveDir.normalized * _moveSpeed + Vector3.up * y;
-            _rb.AddForce(moveDir.normalized * _moveSpeed + Vector3.up * y, ForceMode.Force);
         }
+
+        //_rb.velocity =
+        //new Vector3(hol * _moveSpeed, 0, ver * _moveSpeed) + Vector3.up * y;
+        //moveDir.normalized * _moveSpeed + Vector3.up * y;
+        _rb.AddForce(moveDir.normalized * _moveSpeed + Vector3.up * y, ForceMode.Force);
     }
 
     public void Pause()
@@ -78,5 +80,10 @@ public class PlayerMove : IPause
     public void Resume()
     {
         _rb.isKinematic = false;
+    }
+
+    private enum MoveType
+    {
+
     }
 }
