@@ -36,4 +36,12 @@ namespace Consts
         SB_SCENE,
         RESULT_SCENE,
     }
+
+    public enum ItemType
+    {
+        DEFAULT,
+        STEALTH,
+        HEAL,
+        STATUSUP,
+    }
 }

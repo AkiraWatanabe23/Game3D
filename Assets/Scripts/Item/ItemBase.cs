@@ -7,11 +7,13 @@ using UnityEngine;
 /// </summary>
 public class ItemBase : MonoBehaviour
 {
-    [Tooltip("効果の有効時間")]
-    [SerializeField] private float _validTime = 1f;
+    [SerializeField] private ItemType _type = ItemType.DEFAULT;
+
+    public ItemType Type => _type;
 
     private void OnTriggerEnter(Collider other)
     {
+        //この状態だと、ステルス状態でアイテムの取得ができない(ルール検討)
         if (other.gameObject.CompareTag(Define.PLAYER_TAG))
         {
             ItemBox.AddToList(gameObject);
