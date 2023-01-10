@@ -1,25 +1,23 @@
 ﻿using Consts;
 using Item;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class ItemBox : MonoBehaviour
 {
-    //TODO：アイテムのプレハブをつくり、以下の配列に入れる
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
-    private List<GameObject> _itemList = new();
+    [SerializeField] private int[] _itemCount = new int[3];
 
     [Header("テスト用")]
-    [Tooltip("アイテムの有効時間")]
-    [SerializeField] private float _validTime = 1f;
+    //[Tooltip("アイテムの有効時間")]
+    //[SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent;
 
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
-    public List<GameObject> ItemList { get => _itemList; set => _itemList = value; }
+    public int[] ItemCount { get => _itemCount; set => _itemCount = value; }
 
     private void Awake()
     {
@@ -31,7 +29,7 @@ public class ItemBox : MonoBehaviour
         //テスト用(アイテム削除)
         if (Input.GetKeyDown(KeyCode.R))
         {
-            DisposeToList(_itemList[0]);
+            DisposeToList(_items[0]);
         }
         //テスト用(アイテム使用)
         if (Input.GetKeyDown(KeyCode.U))
@@ -40,13 +38,13 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    public static void AddToList(GameObject item)
+    public static void AddToList(int item)
     {
-        if (_instance.ItemList.Count <= Define.ITEM_LIST_LIMIT)
+        var sum = _instance.ItemCount[0] + _instance.ItemCount[1] + _instance.ItemCount[2];
+
+        if (sum <= Define.ITEM_LIST_LIMIT)
         {
-            _instance.ItemList.Add(item);
-            item.SetActive(false);
-            Debug.Log($"{item.name} をアイテムボックスに追加しました。");
+            _instance.ItemCount[item]++;
         }
         else
         {
@@ -54,16 +52,16 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    public static void DisposeToList(GameObject item)
+    public void DisposeToList(GameObject item)
     {
-        if (_instance.ItemList?.Count > 0)
+        var num = item.GetComponent<ItemBase>().Type;
+        if (_itemCount[(int)num] > 0)
         {
-            _instance.ItemList.Remove(item);
-            Debug.Log($"{item.name} をアイテムボックスから削除しました。");
+            _itemCount[(int)num]--;
         }
         else
         {
-            Debug.LogError("アイテムボックスが空です。");
+            Debug.LogError("指定されたアイテムは既にリストにありません。");
         }
     }
 
@@ -76,9 +74,8 @@ public class ItemBox : MonoBehaviour
         var parent = gameObject.transform.parent.gameObject;
         GameObject consume = _items[item];
 
-        if (_itemList?.Count > 0 && _itemList.Contains(consume))
+        if (_itemCount[item] > 0)
         {
-            //アイテムを使うとき、以下の処理を呼び出す
             switch (item)
             {
                 case 0:
@@ -91,7 +88,7 @@ public class ItemBox : MonoBehaviour
                     UseItem.StatusUpItem(parent, Random.Range(1, 5));
                     break;
             }
-            _itemList.Remove(consume);
+            _itemCount[item]--;
             Debug.Log($"{consume.name} を使用し、アイテムボックスから消費します。");
         }
         else

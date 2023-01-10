@@ -13,10 +13,13 @@ public class ItemBase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //この状態だと、ステルス状態でアイテムの取得ができない(ルール検討)
-        if (other.gameObject.CompareTag(Define.PLAYER_TAG))
+        if (other.gameObject.CompareTag(Define.PLAYER_TAG) || 
+            other.gameObject.CompareTag(Define.STEALTH_TAG))
         {
-            ItemBox.AddToList(gameObject);
+            //ItemBox.AddToList(gameObject);
+            ItemBox.AddToList((int)_type - 1);
+            gameObject.SetActive(false);
+            Debug.Log($"{gameObject.name} をアイテムボックスに追加しました。");
         }
     }
 }
