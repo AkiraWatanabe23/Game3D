@@ -32,32 +32,23 @@ namespace Item
             }
         }
 
-        public static void StatusUpItem(GameObject go, StatusType item)
+        public static void StatusUpItem(GameObject go, int item)
         {
-            //ステータスを向上させる(テスト)
-            if (item == StatusType.MOVE)
+            switch (item)
             {
-                //TODO：Playerの移動速度up
+                case 1:
+                    //TODO：Playerの移動速度up
+                    break;
+                case 2:
+                    //TODO：Playerのジャンプ力up
+                    break;
+                case 3:
+                    //TODO：PlayerのHP上限up -> UIに反映
+                    break;
+                case 4:
+                    //ハズレ?(ex.制限時間down)
+                    break;
             }
-            else if (item == StatusType.JUMP)
-            {
-                //TODO：Playerのジャンプ力up
-            }
-            else if (item == StatusType.HP)
-            {
-                //TODO：PlayerのHP上限up -> UIに反映
-            }
-        }
-
-        public enum StatusType
-        {
-            DEFAULT,
-            /// <summary> 移動速度up </summary>
-            MOVE,
-            /// <summary> ジャンプ力up </summary>
-            JUMP,
-            /// <summary> HP上限up </summary>
-            HP,
         }
     }
 }

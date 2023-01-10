@@ -17,21 +17,20 @@ public class EnemyController : MonoBehaviour, IPause
 
     private GameObject _player = default;
     private NavMeshAgent _agent = default;
-    private EnemyState _state = EnemyState.DEFAULT;
     private int _currentMoveIndex = 0;
     private float _moveSpeed = 0f;
     private float _chaseTime = 0f;
+    private bool _isChasing = false;
 
     public Transform[] MovePos => _movePos;
     public NavMeshAgent Agent => _agent;
-    public EnemyState State { get => _state; set => _state = value; }
 
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _state = EnemyState.MOVE;
         _currentMoveIndex = 0;
         _moveSpeed = _agent.speed;
+        _isChasing = false;
 
         _agent.SetDestination(_movePos[0].position);
     }
@@ -55,17 +54,19 @@ public class EnemyController : MonoBehaviour, IPause
         }
 
         //Playerを追跡する
-        if (_state == EnemyState.CHASE)
+        if (_isChasing)
         {
             _chaseTime += Time.deltaTime;
             _agent.SetDestination(_player.transform.position);
 
-            //一定時間経ったら追跡をやめて、元の場所に戻る
+            //一定時間経ったら追跡をやめて、元の場所での移動に戻る
             if (_chaseTime >= _stopChaseTime)
             {
-                _state = EnemyState.MOVE;
+                _chaseTime = 0f;
+                _isChasing = false;
                 _agent.SetDestination
                     (_movePos[_currentMoveIndex % _movePos.Length].position);
+                Debug.Log("Playerの追跡を終了します");
             }
         }
     }
@@ -92,8 +93,8 @@ public class EnemyController : MonoBehaviour, IPause
 
         if (angle <= _searchAngle)
         {
-            Debug.Log("Find Player");
-            _state = EnemyState.CHASE;
+            Debug.Log("Player発見");
+            _isChasing = true;
             _player = go;
         }
     }
@@ -110,24 +111,12 @@ public class EnemyController : MonoBehaviour, IPause
     [System.Obsolete]
     public void Pause()
     {
-        //TODO：一時停止処理の記述
-        //移動、探索を停止する
         _agent.Stop();
     }
 
     [System.Obsolete]
     public void Resume()
     {
-        //TODO：処理再開の記述
         _agent.Resume();
-    }
-
-    public enum EnemyState
-    {
-        DEFAULT,
-        /// <summary> 通常の移動状態 </summary>
-        MOVE,
-        /// <summary> Player追跡中 </summary>
-        CHASE,
     }
 }

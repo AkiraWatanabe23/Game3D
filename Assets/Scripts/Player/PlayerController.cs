@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        _movements.Update();
         _health.Update();
     }
 

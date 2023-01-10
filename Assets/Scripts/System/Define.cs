@@ -36,15 +36,4 @@ namespace Consts
         SB_SCENE,
         RESULT_SCENE,
     }
-
-    /// <summary>
-    /// アイテムの種類をまとめたenum
-    /// </summary>
-    public enum ItemType
-    {
-        DEFAULT,
-        STEALTH,
-        HEAL,
-        STATUSUP,
-    }
 }

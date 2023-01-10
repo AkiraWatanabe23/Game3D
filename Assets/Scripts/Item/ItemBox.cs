@@ -27,7 +27,7 @@ public class ItemBox : MonoBehaviour
     private void Update()
     {
         //テスト用(アイテム削除)
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             DisposeToList(_itemList[0]);
         }
@@ -61,7 +61,7 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("アイテムボックスが空です。");
+            Debug.LogError("アイテムボックスが空です。");
         }
     }
 
@@ -88,7 +88,7 @@ public class ItemBox : MonoBehaviour
                     useItem = _items[1];
                     break;
                 case 3:
-                    //UseItem.StatusUpItem(parent, );
+                    UseItem.StatusUpItem(parent, Random.Range(1, 5));
                     useItem = _items[2];
                     break;
             }
@@ -97,7 +97,7 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("アイテムボックスが空です。");
+            Debug.LogError("アイテムボックスが空です。");
         }
     }
 }
