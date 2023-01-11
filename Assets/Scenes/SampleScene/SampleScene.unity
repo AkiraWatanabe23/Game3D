@@ -36686,7 +36686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _movements:
     _moveSpeed: 15
-    _jumpPower: 300
+    _jumpPower: 200
     _isPause: 0
   _health:
     _hp: 100
