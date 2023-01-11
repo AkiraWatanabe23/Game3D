@@ -9,7 +9,7 @@ namespace Consts
         public const int ITEM_LIST_LIMIT = 20;
         public const float GAME_TIME = 10f;
 
-        //タグ名
+        //タグ名(使うもののみ)
         public const string PLAYER_TAG = "Player";
         public const string STEALTH_TAG = "Stealth";
 

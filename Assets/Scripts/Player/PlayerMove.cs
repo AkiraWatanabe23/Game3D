@@ -39,7 +39,6 @@ public class PlayerMove : IPause
 
         if (!_rb.isKinematic)
         {
-            //TODO：Playerが進行方向をゆっくりと向くようにする
             float hol = Input.GetAxisRaw("Horizontal");
             float ver = Input.GetAxisRaw("Vertical");
 

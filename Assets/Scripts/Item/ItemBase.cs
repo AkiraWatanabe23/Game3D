@@ -2,7 +2,7 @@
 using UnityEngine;
 
 /// <summary>
-/// アイテムの基底クラス(入手したらボックスに追加)
+/// アイテムのクラス(入手したらボックスに追加)
 /// 使用等の処理はアイテムボックスに記述
 /// </summary>
 public class ItemBase : MonoBehaviour
@@ -18,7 +18,7 @@ public class ItemBase : MonoBehaviour
         {
             ItemBox.AddToList((int)_type);
             gameObject.SetActive(false);
-            Debug.Log($"{gameObject.name} をアイテムボックスに追加しました。");
+            Debug.Log($"{gameObject.name} をリストに追加しました。");
         }
     }
 }

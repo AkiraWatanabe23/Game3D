@@ -35,17 +35,24 @@ namespace Item
 
         public static void StatusUpItem(GameObject go, int item)
         {
+            int riseValue = Random.Range(5, 11);
+
             //どのステータスがUPするかはランダムで決まります
             switch (item)
             {
                 case 1:
                     //TODO：Playerの移動速度up
+                    var speed = go.GetComponent<PlayerController>().Movements;
+                    speed.MoveSpeed += riseValue;
                     break;
                 case 2:
                     //TODO：Playerのジャンプ力up
+                    var jump = go.GetComponent<PlayerController>().Movements;
+                    jump.JumpPower += riseValue;
                     break;
                 case 3:
                     //TODO：PlayerのHP上限up -> UIに反映
+                    var health = go.GetComponent<PlayerController>().Health;
                     break;
                 case 4:
                     //ハズレ?(ex.制限時間down)
