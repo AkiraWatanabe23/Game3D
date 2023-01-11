@@ -5,6 +5,7 @@ namespace Item
 {
     public static class UseItem
     {
+        //アイテム使うときにエフェクトとかあったら分かりやすいかも?
         public static void StealthItem(GameObject go)
         {
             //↓Playerをステルス状態にする
@@ -34,6 +35,7 @@ namespace Item
 
         public static void StatusUpItem(GameObject go, int item)
         {
+            //どのステータスがUPするかはランダムで決まります
             switch (item)
             {
                 case 1:
