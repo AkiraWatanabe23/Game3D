@@ -18,6 +18,7 @@ public class PlayerMove : IPause
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
+    public bool IsPause { get => _isPause; set => _isPause = value; }
 
     public void Init(Transform trans, Rigidbody rb)
     {

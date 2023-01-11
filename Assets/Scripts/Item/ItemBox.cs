@@ -3,7 +3,7 @@ using Item;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemBox : MonoBehaviour, IPause
+public class ItemBox : MonoBehaviour
 {
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
@@ -14,6 +14,7 @@ public class ItemBox : MonoBehaviour, IPause
     //[SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent;
 
+    private GameObject _player = default;
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
@@ -21,6 +22,7 @@ public class ItemBox : MonoBehaviour, IPause
 
     private void Awake()
     {
+        _player = transform.parent.gameObject;
         _instance = this;
     }
 
@@ -91,15 +93,5 @@ public class ItemBox : MonoBehaviour, IPause
         {
             Debug.LogError("指定されたアイテムがありません。");
         }
-    }
-
-    public void Pause()
-    {
-        //TODO：アイテムリストを開いたとき、開いている間はPause
-    }
-
-    public void Resume()
-    {
-        //TODO：アイテムリストを閉じたら再開
     }
 }

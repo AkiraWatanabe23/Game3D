@@ -1,5 +1,4 @@
-﻿using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// <summary>
 /// Playerの各機能をまとめたもの
@@ -33,5 +32,16 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         _movements.FixedUpdate();
+    }
+
+    //UIで扱うPause処理
+    public void Pause()
+    {
+        _movements.IsPause = true;
+    }
+
+    public void Resume()
+    {
+        _movements.IsPause = false;
     }
 }
