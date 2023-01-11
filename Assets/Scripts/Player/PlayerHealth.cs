@@ -3,7 +3,7 @@
 [System.Serializable]
 public class PlayerHealth
 {
-    [Header("体力系ステータス")]
+    [Header("体力系Status")]
     [SerializeField] private int _hp = 100;
 
     private int _maxHp = 0;

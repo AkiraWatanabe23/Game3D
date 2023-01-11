@@ -3,7 +3,7 @@
 [System.Serializable]
 public class PlayerMove : IPause
 {
-    [Header("移動系ステータス")]
+    [Header("移動系Status")]
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
 

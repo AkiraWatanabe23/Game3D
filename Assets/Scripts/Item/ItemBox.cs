@@ -3,7 +3,7 @@ using Item;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ItemBox : MonoBehaviour
+public class ItemBox : MonoBehaviour, IPause
 {
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
@@ -26,6 +26,7 @@ public class ItemBox : MonoBehaviour
 
     private void Update()
     {
+        //TODO：アイテム使用時、削除時にPause処理が必要
         //テスト用(アイテム使用、削除)
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -90,5 +91,15 @@ public class ItemBox : MonoBehaviour
         {
             Debug.LogError("指定されたアイテムがありません。");
         }
+    }
+
+    public void Pause()
+    {
+        //TODO：アイテムリストを開いたとき、開いている間はPause
+    }
+
+    public void Resume()
+    {
+        //TODO：アイテムリストを閉じたら再開
     }
 }
