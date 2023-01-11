@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
 /// <summary>
 /// Playerの各機能をまとめたもの
@@ -7,9 +8,11 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMove _movements = default;
     [SerializeField] private PlayerHealth _health = default;
+    [SerializeField] private PlayerAttack _attack = default;
 
     public PlayerMove Movements => _movements;
     public PlayerHealth Health => _health;
+    public PlayerAttack Attack => _attack;
 
     private void Awake()
     {
@@ -17,12 +20,14 @@ public class PlayerController : MonoBehaviour
 
         _movements.Init(transform, rb);
         _health.Init();
+        _attack.Init();
     }
 
     private void Update()
     {
         _movements.Update();
         _health.Update();
+        _attack.Update();
     }
 
     private void FixedUpdate()

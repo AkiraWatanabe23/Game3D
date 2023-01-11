@@ -1962,7 +1962,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012741108}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -26737,7 +26737,6 @@ MonoBehaviour:
     _moveSpeed: 15
     _jumpPower: 5
     _isPause: 0
-    _maxSpeed: 10
   _health:
     _hp: 100
 --- !u!1 &1357920126
@@ -34975,7 +34974,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012741108}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1380401821
 MonoBehaviour:
@@ -36059,7 +36058,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2012741108}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1816384664
 MeshRenderer:
@@ -36651,9 +36650,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1380401820}
   - {fileID: 1816384662}
   - {fileID: 957945269}
-  - {fileID: 1380401820}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36689,7 +36688,6 @@ MonoBehaviour:
     _moveSpeed: 20
     _jumpPower: 7
     _isPause: 0
-    _maxSpeed: 10
   _health:
     _hp: 100
 --- !u!43 &2051191020

@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour, IPause
 
     [Header("テスト用")]
     [SerializeField] private bool _isPause = false;
+    [SerializeField] private int _enemyHp = 10;
 
     private GameObject _player = default;
     private NavMeshAgent _agent = default;
@@ -21,9 +22,6 @@ public class EnemyController : MonoBehaviour, IPause
     private float _moveSpeed = 0f;
     private float _chaseTime = 0f;
     private bool _isChasing = false;
-
-    public Transform[] MovePos => _movePos;
-    public NavMeshAgent Agent => _agent;
 
     private void Start()
     {
@@ -69,6 +67,11 @@ public class EnemyController : MonoBehaviour, IPause
                 Debug.Log("Playerの追跡を終了します");
             }
         }
+
+        if (_enemyHp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -96,6 +99,16 @@ public class EnemyController : MonoBehaviour, IPause
             Debug.Log("Player発見");
             _isChasing = true;
             _player = go;
+        }
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        //ダメージ処理(ここはPlayerのタグでいいのかは確認)
+        if (col.gameObject.CompareTag(Define.PLAYER_TAG))
+        {
+            var damage = col.gameObject.GetComponent<PlayerController>().Attack.AttackValue;
+            _enemyHp -= damage;
         }
     }
 
