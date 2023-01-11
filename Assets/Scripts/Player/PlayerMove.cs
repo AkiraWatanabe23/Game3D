@@ -9,7 +9,6 @@ public class PlayerMove : IPause
 
     [Header("テスト用")]
     [SerializeField] private bool _isPause = false;
-    [SerializeField] private float _maxSpeed = 10f;
 
     //↓移動の計算等に用いる変数
     private Transform _trans;
@@ -64,7 +63,7 @@ public class PlayerMove : IPause
     
     public void FixedUpdate()
     {
-        _rb.AddForce(_maxSpeed * (_moveDir.normalized * _moveSpeed - _rb.velocity));
+        _rb.AddForce(_moveDir.normalized * _moveSpeed - _rb.velocity);
     }
 
     public void Pause()
