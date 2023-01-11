@@ -29,13 +29,13 @@ public class GameManager : MonoBehaviour, IPause
         {
             _timer = Define.GAME_TIME;
         }
-        //TODO：Playerを、設定したスポーン位置の内のいずれかにランダムで生成する
+        //TODO：Playerを設定したスポーン位置の内のいずれかにランダムで生成する
         //Instantiate(_playerPrefab, _spawnPos[Random.Range(0, _spawnPos.Length)]);
     }
 
     private void Update()
     {
-        //実行中のみカウントする
+        //実行中のみ制限時間のカウントをする
         if (!_isPause)
             _timer -= Time.deltaTime;
 
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour, IPause
                 (Define.Scenes[SceneNames.RESULT_SCENE]);
         }
 
-        //指定したキーを入力し、ゲームの実行を一時停止する
+        //ゲームの一時停止
         if (Input.GetKeyDown(_pauseKey))
         {
             if (!_isPause)
@@ -55,14 +55,11 @@ public class GameManager : MonoBehaviour, IPause
                 Resume();
         }
 
-        //指定したキーを入力し、ゲームの実行を終了する
+        //ゲームの終了
         if (Input.GetKeyDown(_closeKey))
             GameClose();
     }
 
-    /// <summary>
-    /// ゲームを終了する
-    /// </summary>
     private void GameClose()
     {
 #if UNITY_EDITOR

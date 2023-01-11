@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class ItemBox : MonoBehaviour
 {
+    [Tooltip("アイテムリストを開くキー")]
+    [SerializeField] private KeyCode _itemKey;
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [SerializeField] private int[] _itemCount = new int[3];
@@ -14,7 +16,6 @@ public class ItemBox : MonoBehaviour
     //[SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent;
 
-    private GameObject _player = default;
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
@@ -22,15 +23,13 @@ public class ItemBox : MonoBehaviour
 
     private void Awake()
     {
-        _player = transform.parent.gameObject;
         _instance = this;
     }
 
     private void Update()
     {
-        //TODO：アイテム使用時、削除時にPause処理が必要
         //テスト用(アイテム使用、削除)
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(_itemKey))
         {
             _itemEvent?.Invoke();
         }
