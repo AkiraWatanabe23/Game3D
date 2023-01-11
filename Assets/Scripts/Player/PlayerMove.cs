@@ -45,8 +45,7 @@ public class PlayerMove : IPause
             _y = _rb.velocity.y;
             if (Input.GetButtonDown("Jump") && _y == 0f)
             {
-                _y = _jumpPower;
-                _rb.AddForce(Vector3.up * _y, ForceMode.Force);
+                _rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
             }
 
             _moveDir = Vector3.forward * ver + Vector3.right * hol;
@@ -65,7 +64,6 @@ public class PlayerMove : IPause
     
     public void FixedUpdate()
     {
-        //_rb.AddForce(_moveDir.normalized * _moveSpeed, ForceMode.Force);
         _rb.AddForce(_maxSpeed * (_moveDir.normalized * _moveSpeed - _rb.velocity));
     }
 
