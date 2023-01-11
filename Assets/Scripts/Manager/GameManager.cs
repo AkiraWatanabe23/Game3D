@@ -37,9 +37,7 @@ public class GameManager : MonoBehaviour, IPause
     {
         //実行中のみカウントする
         if (!_isPause)
-        {
             _timer -= Time.deltaTime;
-        }
 
         if (_timer <= 0f)
         {
@@ -52,20 +50,14 @@ public class GameManager : MonoBehaviour, IPause
         if (Input.GetKeyDown(_pauseKey))
         {
             if (!_isPause)
-            {
                 Pause();
-            }
             else
-            {
                 Resume();
-            }
         }
 
         //指定したキーを入力し、ゲームの実行を終了する
         if (Input.GetKeyDown(_closeKey))
-        {
             GameClose();
-        }
     }
 
     /// <summary>

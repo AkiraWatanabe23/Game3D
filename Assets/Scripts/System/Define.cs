@@ -29,7 +29,6 @@ namespace Consts
     /// </summary>
     public enum SceneNames
     {
-        DEFAULT,
         TITLE_SCENE,
         FF_SCENE,
         FB_SCENE,
@@ -39,7 +38,6 @@ namespace Consts
 
     public enum ItemType
     {
-        DEFAULT,
         STEALTH,
         HEAL,
         STATUSUP,

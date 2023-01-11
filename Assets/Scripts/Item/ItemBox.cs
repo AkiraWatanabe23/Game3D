@@ -26,13 +26,8 @@ public class ItemBox : MonoBehaviour
 
     private void Update()
     {
-        //テスト用(アイテム削除)
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            DisposeToList(_items[0]);
-        }
-        //テスト用(アイテム使用)
-        if (Input.GetKeyDown(KeyCode.U))
+        //テスト用(アイテム使用、削除)
+        if (Input.GetKeyDown(KeyCode.I))
         {
             _itemEvent?.Invoke();
         }
@@ -52,12 +47,12 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    public void DisposeToList(GameObject item)
+    public void DisposeToList(int item)
     {
-        var num = item.GetComponent<ItemBase>().Type;
-        if (_itemCount[(int)num] > 0)
+        if (_itemCount[item] > 0)
         {
-            _itemCount[(int)num]--;
+            _itemCount[item]--;
+            Debug.Log($"指定されたアイテムをリストから削除しました。");
         }
         else
         {

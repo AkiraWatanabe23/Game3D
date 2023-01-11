@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ItemBase : MonoBehaviour
 {
-    [SerializeField] private ItemType _type = ItemType.DEFAULT;
+    [SerializeField] private ItemType _type = default;
 
     public ItemType Type => _type;
 
@@ -16,8 +16,7 @@ public class ItemBase : MonoBehaviour
         if (other.gameObject.CompareTag(Define.PLAYER_TAG) || 
             other.gameObject.CompareTag(Define.STEALTH_TAG))
         {
-            //ItemBox.AddToList(gameObject);
-            ItemBox.AddToList((int)_type - 1);
+            ItemBox.AddToList((int)_type);
             gameObject.SetActive(false);
             Debug.Log($"{gameObject.name} をアイテムボックスに追加しました。");
         }

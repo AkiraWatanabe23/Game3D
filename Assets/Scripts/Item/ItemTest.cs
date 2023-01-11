@@ -1,6 +1,5 @@
-using Consts;
+﻿using Consts;
 using Item;
-using System.Collections;
 using UnityEngine;
 
 public class ItemTest : MonoBehaviour
@@ -17,7 +16,7 @@ public class ItemTest : MonoBehaviour
         }
         else
         {
-            Debug.Log("���X�g������ɒB���Ă��邽�߁A�A�C�e����ǉ��ł��܂���B");
+            Debug.Log("リストが上限に達しているため、アイテムを追加できません。");
         }
     }
 
@@ -30,24 +29,24 @@ public class ItemTest : MonoBehaviour
         }
         else
         {
-            Debug.LogError("�w�肳�ꂽ�A�C�e���͊��Ƀ��X�g�ɂ���܂���B");
+            Debug.LogError("指定されたアイテムは既にリストにありません。");
         }
 
         //if (ItemList?.Count > 0)
         //{
         //    ItemList.Remove(item);
-        //    Debug.Log($"{item.name} ���A�C�e���{�b�N�X����폜���܂����B");
+        //    Debug.Log($"{item.name} をアイテムボックスから削除しました。");
         //}
         //else
         //{
-        //    Debug.LogError("�w�肳�ꂽ�A�C�e���͊��Ƀ��X�g�ɂ���܂���B");
+        //    Debug.LogError("指定されたアイテムは既にリストにありません。");
         //}
     }
 
     /// <summary>
-    /// UI�ŃA�C�e����I�������Ƃ��Ɏ��s����
+    /// UIでアイテムを選択したときに実行する
     /// </summary>
-    /// <param name="item"> �A�C�e���̎�� </param>
+    /// <param name="item"> アイテムの種類 </param>
     public void ConsumeItem(int item)
     {
         var parent = gameObject.transform.parent.gameObject;
@@ -55,7 +54,7 @@ public class ItemTest : MonoBehaviour
 
         if (_itemCount[item] > 0)
         {
-            //�A�C�e�����g���Ƃ��A�ȉ��̏������Ăяo��
+            //アイテムを使うとき、以下の処理を呼び出す
             switch (item)
             {
                 case 0:
@@ -70,11 +69,11 @@ public class ItemTest : MonoBehaviour
             }
             //_itemList.Remove(consume);
             _itemCount[item]--;
-            Debug.Log($"{consume.name} ���g�p���A�A�C�e���{�b�N�X�������܂��B");
+            Debug.Log($"{consume.name} を使用し、アイテムボックスから消費します。");
         }
         else
         {
-            Debug.LogError("�w�肳�ꂽ�A�C�e��������܂���B");
+            Debug.LogError("指定されたアイテムがありません。");
         }
     }
 }

@@ -1,4 +1,4 @@
-using Consts;
+ï»¿using Consts;
 using UnityEngine;
 
 namespace Item
@@ -7,9 +7,9 @@ namespace Item
     {
         public static void StealthItem(GameObject go)
         {
-            //«Player‚ğƒXƒeƒ‹ƒXó‘Ô‚É‚·‚é
+            //â†“Playerã‚’ã‚¹ãƒ†ãƒ«ã‚¹çŠ¶æ…‹ã«ã™ã‚‹
             go.tag = Define.STEALTH_TAG;
-            //«‹Šo“I‚ÈƒXƒeƒ‹ƒXó‘Ô(“§–¾“x‚ğ”¼•ª‚Ü‚Å—‚Æ‚·)
+            //â†“è¦–è¦šçš„ãªã‚¹ãƒ†ãƒ«ã‚¹çŠ¶æ…‹(é€æ˜åº¦ã‚’åŠåˆ†ã¾ã§è½ã¨ã™)
             float alpha = 1f;
             Color color = go.GetComponent<MeshRenderer>().material.color;
             alpha /= 2f;
@@ -22,14 +22,14 @@ namespace Item
         {
             int healValue = Random.Range(5, 16);
             var health = go.GetComponent<PlayerController>().Health;
-            //«Player‚Ì‘Ì—Í‚ğ‰ñ•œ‚·‚é
+            //â†“Playerã®ä½“åŠ›ã‚’å›å¾©ã™ã‚‹
             health.HP += healValue;
 
             if (health.HP >= health.MaxHp)
             {
                 health.HP = health.MaxHp;
             }
-            Debug.Log($"Player‚Ì‘Ì—Í‚ğ {healValue} ‰ñ•œ‚µ‚Ü‚µ‚½B");
+            Debug.Log($"Playerã®ä½“åŠ›ã‚’ {healValue} å›å¾©ã—ã¾ã—ãŸã€‚");
         }
 
         public static void StatusUpItem(GameObject go, int item)
@@ -37,16 +37,16 @@ namespace Item
             switch (item)
             {
                 case 1:
-                    //TODOFPlayer‚ÌˆÚ“®‘¬“xup
+                    //TODOï¼šPlayerã®ç§»å‹•é€Ÿåº¦up
                     break;
                 case 2:
-                    //TODOFPlayer‚ÌƒWƒƒƒ“ƒv—Íup
+                    //TODOï¼šPlayerã®ã‚¸ãƒ£ãƒ³ãƒ—åŠ›up
                     break;
                 case 3:
-                    //TODOFPlayer‚ÌHPãŒÀup -> UI‚É”½‰f
+                    //TODOï¼šPlayerã®HPä¸Šé™up -> UIã«åæ˜ 
                     break;
                 case 4:
-                    //ƒnƒYƒŒ?(ex.§ŒÀŠÔdown)
+                    //ãƒã‚ºãƒ¬?(ex.åˆ¶é™æ™‚é–“down)
                     break;
             }
         }

@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoaders : MonoBehaviour
 {
     [Tooltip("遷移先のシーン")]
-    [SerializeField] private SceneNames _nextScene = SceneNames.DEFAULT;
+    [SerializeField] private SceneNames _nextScene = default;
 
     /// <summary>
     /// フェードアウト -> シーン遷移
