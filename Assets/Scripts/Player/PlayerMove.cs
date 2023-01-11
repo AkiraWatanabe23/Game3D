@@ -45,6 +45,7 @@ public class PlayerMove : IPause
             _y = _rb.velocity.y;
             if (Input.GetButtonDown("Jump") && _y == 0f)
             {
+                Debug.Log("aaa");
                 _y = _jumpPower;
             }
 
