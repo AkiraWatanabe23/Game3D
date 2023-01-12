@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary> ランダムなアイテムを一定時間ごとにスポーンする </summary>
@@ -17,7 +16,7 @@ public class ItemSpawner : MonoBehaviour
 
     private void ItemSpawn()
     {
-        //TODO：同じ場所にアイテムがスポーンされるのを防ぐ
+        //TODO：同じ場所にアイテムがスポーンされるのを防ぐ必要がある
         foreach (var spawn in _spawnPos)
         {
             var go = Instantiate(_items[Random.Range(0, _items.Length)]);

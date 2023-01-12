@@ -12,14 +12,17 @@ public class ItemBox : MonoBehaviour
     [SerializeField] private int[] _itemCount = new int[3];
 
     [Header("テスト用")]
-    //[Tooltip("アイテムの有効時間")]
-    //[SerializeField] private float _validTime = 1f;
-    [SerializeField] private UnityEvent _itemEvent;
+    [Tooltip("アイテムの有効時間")]
+    [SerializeField] private float _validTime = 1f;
+    [SerializeField] private UnityEvent _itemEvent = default;
 
+    private float _usingTimer = 0f;
+    private bool _isUsing = false;
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
     public int[] ItemCount { get => _itemCount; set => _itemCount = value; }
+    public bool IsUsing { get => _isUsing; set => _isUsing = value; }
 
     private void Awake()
     {
@@ -28,6 +31,17 @@ public class ItemBox : MonoBehaviour
 
     private void Update()
     {
+        if (_isUsing)
+        {
+            _usingTimer += Time.deltaTime;
+            if (_usingTimer >= _validTime)
+            {
+                _usingTimer = 0f;
+                _isUsing = false;
+                CancelItem();
+            }
+        }
+
         //テスト用(アイテム使用、削除)
         if (Input.GetKeyDown(_itemKey))
         {
@@ -91,6 +105,24 @@ public class ItemBox : MonoBehaviour
         else
         {
             Debug.LogError("指定されたアイテムがありません。");
+        }
+    }
+
+    private void CancelItem()
+    {
+        var player = transform.parent.gameObject;
+
+        //ステルスアイテムの解除
+        if (player.CompareTag(Define.STEALTH_TAG))
+        {
+            //↓Playerを元に戻す
+            player.tag = Define.PLAYER_TAG;
+            //↓視覚的なステルス状態(透明度を半分まで落とす)
+            float alpha = 1f;
+            Color color = player.GetComponent<MeshRenderer>().material.color;
+
+            color.a = alpha;
+            player.GetComponent<MeshRenderer>().material.color = color;
         }
     }
 }

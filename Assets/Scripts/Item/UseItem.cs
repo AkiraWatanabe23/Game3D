@@ -8,6 +8,7 @@ namespace Item
         //アイテム使うときにエフェクトとかあったら分かりやすいかも?
         public static void StealthItem(GameObject go)
         {
+            var itemBox = go.GetComponentInChildren<ItemBox>();
             //↓Playerをステルス状態にする
             go.tag = Define.STEALTH_TAG;
             //↓視覚的なステルス状態(透明度を半分まで落とす)
@@ -17,6 +18,8 @@ namespace Item
 
             color.a = alpha;
             go.GetComponent<MeshRenderer>().material.color = color;
+
+            itemBox.IsUsing = true;
         }
 
         public static void HealItem(GameObject go)
