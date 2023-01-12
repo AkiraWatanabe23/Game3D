@@ -18,6 +18,7 @@ public class ItemBox : MonoBehaviour
 
     private float _usingTimer = 0f;
     private bool _isUsing = false;
+    private GameObject _player = default;
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
@@ -26,6 +27,7 @@ public class ItemBox : MonoBehaviour
 
     private void Awake()
     {
+        _player = transform.parent.gameObject;
         _instance = this;
     }
 
@@ -82,7 +84,6 @@ public class ItemBox : MonoBehaviour
     /// <param name="item"> アイテムの種類 </param>
     public void ConsumeItem(int item)
     {
-        var parent = gameObject.transform.parent.gameObject;
         GameObject consume = _items[item];
 
         if (_itemCount[item] > 0)
@@ -90,13 +91,13 @@ public class ItemBox : MonoBehaviour
             switch (item)
             {
                 case 0:
-                    UseItem.StealthItem(parent);
+                    UseItem.StealthItem(_player);
                     break;
                 case 1:
-                    UseItem.HealItem(parent);
+                    UseItem.HealItem(_player);
                     break;
                 case 2:
-                    UseItem.StatusUpItem(parent, Random.Range(1, 5));
+                    UseItem.StatusUpItem(_player, Random.Range(1, 5));
                     break;
             }
             _itemCount[item]--;
@@ -110,19 +111,17 @@ public class ItemBox : MonoBehaviour
 
     private void CancelItem()
     {
-        var player = transform.parent.gameObject;
-
-        if (player.CompareTag(Define.STEALTH_TAG))
+        if (_player.CompareTag(Define.STEALTH_TAG))
         {
             //ステルスアイテムの解除
             //↓Playerを元に戻す
-            player.tag = Define.PLAYER_TAG;
+            _player.tag = Define.PLAYER_TAG;
 
             float alpha = 1f;
-            Color color = player.GetComponent<MeshRenderer>().material.color;
+            Color color = _player.GetComponent<MeshRenderer>().material.color;
 
             color.a = alpha;
-            player.GetComponent<MeshRenderer>().material.color = color;
+            _player.GetComponent<MeshRenderer>().material.color = color;
         }
         else
         {
