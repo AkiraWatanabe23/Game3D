@@ -112,17 +112,23 @@ public class ItemBox : MonoBehaviour
     {
         var player = transform.parent.gameObject;
 
-        //ステルスアイテムの解除
         if (player.CompareTag(Define.STEALTH_TAG))
         {
+            //ステルスアイテムの解除
             //↓Playerを元に戻す
             player.tag = Define.PLAYER_TAG;
-            //↓視覚的なステルス状態(透明度を半分まで落とす)
+
             float alpha = 1f;
             Color color = player.GetComponent<MeshRenderer>().material.color;
 
             color.a = alpha;
             player.GetComponent<MeshRenderer>().material.color = color;
+        }
+        else
+        {
+            //TODO：ステルス向上アイテムの解除
+
+            //元の値(上昇前)の値を保存しておいて、その値に戻す
         }
     }
 }
