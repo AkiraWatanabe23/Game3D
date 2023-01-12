@@ -22,11 +22,19 @@ namespace Consts
             [SceneNames.SB_SCENE] = "SecondBasementScene",
             [SceneNames.RESULT_SCENE] = "ResultScene",
         };
+
+        //コード内でAnimationを再生するのに使う
+        public static readonly Dictionary<AnimType, string> Anims = new()
+        {
+            [AnimType.IDLE] = "Idle",
+            [AnimType.MOVE] = "Move",
+            [AnimType.JUMP] = "Jump",
+            [AnimType.ATTACK] = "Attack",
+            [AnimType.DAMAGE] = "Damage",
+            [AnimType.DEAD] = "Dead",
+        };
     }
 
-    /// <summary>
-    /// シーン名のenum
-    /// </summary>
     public enum SceneNames
     {
         TITLE_SCENE,
@@ -34,6 +42,16 @@ namespace Consts
         FB_SCENE,
         SB_SCENE,
         RESULT_SCENE,
+    }
+
+    public enum AnimType
+    {
+        IDLE,
+        MOVE,
+        JUMP,
+        ATTACK,
+        DAMAGE,
+        DEAD,
     }
 
     public enum ItemType
