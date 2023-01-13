@@ -1,9 +1,10 @@
 ﻿using Consts;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyController : MonoBehaviour, IPause
+public class EnemyController : MonoBehaviour, IPause, IDamage
 {
     [SerializeField] private Transform[] _movePos = new Transform[2];
     [Tooltip("視界の範囲(*2)")]
@@ -127,5 +128,10 @@ public class EnemyController : MonoBehaviour, IPause
     public void Resume()
     {
         _agent.Resume();
+    }
+
+    public void Damage(int damage)
+    {
+        _enemyHp -= damage;
     }
 }
