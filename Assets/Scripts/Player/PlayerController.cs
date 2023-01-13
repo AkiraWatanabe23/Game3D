@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Playerの各機能をまとめたもの
-/// </summary>
+/// <summary> Playerの各機能をまとめたもの </summary>
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMove _movements = default;

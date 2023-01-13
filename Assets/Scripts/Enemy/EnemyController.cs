@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour, IPause
 {
     [SerializeField] private Transform[] _movePos = new Transform[2];
-    [Tooltip("視界の範囲")]
+    [Tooltip("視界の範囲(*2)")]
     [Range(0f, 180f)]
     [SerializeField] private float _searchAngle = 0f;
     [Tooltip("何秒経ったらPlayerの追跡をやめるか")]
@@ -74,9 +74,7 @@ public class EnemyController : MonoBehaviour, IPause
         }
     }
 
-    /// <summary>
-    /// 進行先を次の位置に切り替える
-    /// </summary>
+    /// <summary> 進行先を次の位置に切り替える </summary>
     private void SwitchTarget()
     {
         _agent.speed = _moveSpeed;
@@ -85,9 +83,7 @@ public class EnemyController : MonoBehaviour, IPause
             (_movePos[_currentMoveIndex % _movePos.Length].position);
     }
 
-    /// <summary>
-    /// Playerが視界の中に入っているか
-    /// </summary>
+    /// <summary> Playerが視界の中に入っているか </summary>
     /// <param name="go"> Playerのオブジェクト </param>
     private void ChasePlayer(GameObject go)
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [System.Serializable]
-public class PlayerHealth
+public class PlayerHealth : IDamage
 {
     [Header("体力系Status")]
     [SerializeField] private int _hp = 100;

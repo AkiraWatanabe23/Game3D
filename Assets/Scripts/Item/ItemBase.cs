@@ -1,10 +1,8 @@
 ﻿using Consts;
 using UnityEngine;
 
-/// <summary>
-/// アイテムのクラス(入手したらボックスに追加)
-/// 使用等の処理はアイテムボックスに記述
-/// </summary>
+/// <summary> アイテムのクラス(入手したらボックスに追加)
+///           使用等の処理はアイテムボックスに記述 </summary>
 public class ItemBase : MonoBehaviour
 {
     [SerializeField] private ItemType _type = default;

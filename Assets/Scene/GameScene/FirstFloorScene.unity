@@ -452,12 +452,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pauseKey: 304
   _closeKey: 27
-  _spawnPos:
+  _playerSpawn:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   _playerPrefab: {fileID: 0}
+  _isPause: 0
 --- !u!82 &415800733
 AudioSource:
   m_ObjectHideFlags: 0
@@ -701,7 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db213e728fe29ca47ab4d3ee6ead3daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextScene: 3
+  _nextScene: 2
 --- !u!1 &612965721
 GameObject:
   m_ObjectHideFlags: 0

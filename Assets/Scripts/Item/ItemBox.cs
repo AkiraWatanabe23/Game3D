@@ -33,6 +33,7 @@ public class ItemBox : MonoBehaviour
 
     private void Update()
     {
+        //アイテムの使用時間制限(一定時間経ったら解除)
         if (_isUsing)
         {
             _usingTimer += Time.deltaTime;
@@ -78,9 +79,7 @@ public class ItemBox : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// UIでアイテムを選択したときに実行する
-    /// </summary>
+    /// <summary> UIでアイテムを選択したときに実行する </summary>
     /// <param name="item"> アイテムの種類 </param>
     public void ConsumeItem(int item)
     {

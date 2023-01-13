@@ -17,6 +17,10 @@ public class PlayerAttack
 
     public void Update()
     {
-        //TODO：攻撃処理(攻撃の種類による)
+        //TODO：攻撃処理(攻撃の種類によるため、検討)
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("attack");
+        }
     }
 }

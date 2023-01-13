@@ -9,16 +9,16 @@ public class GameManager : MonoBehaviour, IPause
     [Tooltip("ゲームを終了するキー")]
     [SerializeField] private KeyCode _closeKey;
     [Tooltip("Playerの初期位置をランダムで決める")]
-    [SerializeField] private Transform[] _spawnPos = new Transform[4];
+    [SerializeField] private Transform[] _playerSpawn = new Transform[4];
     [SerializeField] private GameObject _playerPrefab;
 
     [Header("テスト用")]
-    [SerializeField] private static bool _isGodMode = false;
     [SerializeField] private bool _isPause = false;
 
+    //private static bool _isGodMode = false;
     private static float _timer = 0f;
 
-    public static bool IsGodMode => _isGodMode;
+    //public static bool IsGodMode => _isGodMode;
     public static float Timer { get => _timer; set => _timer = value; }
 
     private void Awake()
@@ -30,14 +30,16 @@ public class GameManager : MonoBehaviour, IPause
             _timer = Define.GAME_TIME;
         }
         //TODO：Playerを設定したスポーン位置の内のいずれかにランダムで生成する
-        //Instantiate(_playerPrefab, _spawnPos[Random.Range(0, _spawnPos.Length)]);
+        //Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Length)]);
     }
 
     private void Update()
     {
         //実行中のみ制限時間のカウントをする
         if (!_isPause)
+        {
             _timer -= Time.deltaTime;
+        }
 
         if (_timer <= 0f)
         {

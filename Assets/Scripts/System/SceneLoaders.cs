@@ -10,9 +10,7 @@ public class SceneLoaders : MonoBehaviour
     [Tooltip("遷移先のシーン")]
     [SerializeField] private SceneNames _nextScene = default;
 
-    /// <summary>
-    /// フェードアウト -> シーン遷移
-    /// </summary>
+    /// <summary> フェードアウト -> シーン遷移 </summary>
     /// <param name="sceneName"> 遷移先のシーン名 </param>
     public static void PassToLoad(string sceneName)
     {
@@ -20,10 +18,8 @@ public class SceneLoaders : MonoBehaviour
             (() => SceneManager.LoadScene(sceneName));
     }
 
-    /// <summary>
-    /// フェードアウト -> シーン遷移
-    /// (シーン上のPanel,Button等に設定)
-    /// </summary>
+    /// <summary> フェードアウト -> シーン遷移
+    ///          (シーン上のPanel,Button等に設定) </summary>
     public void LoadToScene()
     {
         PassToLoad(Define.Scenes[_nextScene]);

@@ -15,9 +15,7 @@ public class SoundManager : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    /// <summary>
-    /// 指定されたSEを再生する
-    /// </summary>
+    /// <summary> 指定されたSEを再生する </summary>
     /// <param name="index"> SEの配列のインデックス </param>
     public void AudioPlay(int index)
     {

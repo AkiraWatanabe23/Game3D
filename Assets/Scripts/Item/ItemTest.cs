@@ -43,9 +43,7 @@ public class ItemTest : MonoBehaviour
         //}
     }
 
-    /// <summary>
-    /// UIでアイテムを選択したときに実行する
-    /// </summary>
+    /// <summary> UIでアイテムを選択したときに実行する </summary>
     /// <param name="item"> アイテムの種類 </param>
     public void ConsumeItem(int item)
     {

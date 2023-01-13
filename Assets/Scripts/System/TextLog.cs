@@ -2,9 +2,7 @@
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-/// <summary>
-/// アイテムボックスな内でアイテムを選んだ時のログ表示
-/// </summary>
+/// <summary> アイテムボックスな内でアイテムを選んだ時のログ表示 </summary>
 public class TextLog : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Tooltip("アイテムのログを表示するUI")]
