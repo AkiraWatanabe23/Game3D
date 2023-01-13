@@ -21,8 +21,11 @@ public class PlayerAttack
         //TODO：攻撃処理(銃)
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("attack");
-            //Rayをとばし、Enemyにダメージを与える
+            if (Physics.Raycast(_muzzle.position, _muzzle.forward, out RaycastHit hit, 10))
+            {
+                var point = hit.collider.gameObject;
+                Debug.Log($"Hit {point.name}");
+            }
         }
     }
 }
