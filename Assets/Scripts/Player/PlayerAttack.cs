@@ -36,7 +36,12 @@ public class PlayerAttack
         //TODO：攻撃処理(銃の動き)
         if (Input.GetButtonDown("Fire1"))
         {
-
+            //Rayが当たっているのがEnemyかどうかを判定
+            if (point.TryGetComponent<EnemyController>(out var enemy))
+            {
+                //Enemyだったら、ダメージを与える
+                enemy.GetComponent<EnemyController>().Damage(_attackValue);
+            }
         }
     }
 }
