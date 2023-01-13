@@ -59,6 +59,7 @@ namespace Item
                     break;
                 case 4:
                     //ハズレ?(ex.制限時間down)
+                    GameManager.Timer -= 5f;
                     break;
             }
         }

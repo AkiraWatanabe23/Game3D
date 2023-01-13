@@ -17,8 +17,8 @@ public class ItemBase : MonoBehaviour
             other.gameObject.CompareTag(Define.STEALTH_TAG))
         {
             ItemBox.AddToList((int)_type);
-            gameObject.SetActive(false);
             Debug.Log($"{gameObject.name} をリストに追加しました。");
+            Destroy(gameObject);
         }
     }
 }

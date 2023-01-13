@@ -114,7 +114,7 @@ public class ItemBox : MonoBehaviour
         if (_player.CompareTag(Define.STEALTH_TAG))
         {
             //ステルスアイテムの解除
-            //↓Playerを元に戻す
+            //↓Playerを元の状態に戻す
             _player.tag = Define.PLAYER_TAG;
 
             float alpha = 1f;
@@ -122,6 +122,7 @@ public class ItemBox : MonoBehaviour
 
             color.a = alpha;
             _player.GetComponent<MeshRenderer>().material.color = color;
+            Debug.Log("ステルス解除");
         }
         else
         {
