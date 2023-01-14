@@ -252,14 +252,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51017701c5068524aa6168df3eb57e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movements:
+  _movement:
     _moveSpeed: 20
-    _jumpPower: 5
+    _jumpPower: 1
     _isPause: 0
   _health:
     _hp: 100
-  _attack:
-    _attackValue: 5
+    _maxHp: 0
 --- !u!1 &184473758
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@ namespace Item
             int riseValue = Random.Range(5, 11);
 
             //どのステータスがUPするかはランダムで決まる
-            //ステータス上昇中かどうかが、視覚的に分かりやすい方が良い
+            //ステータス上昇中かどうかが、視覚的(UI等)に分かりやすい方が良い
             switch (item)
             {
                 case 1:
@@ -50,26 +50,22 @@ namespace Item
                     var speed = go.GetComponent<PlayerController>().Movements;
                     itemBox.BefValue = speed.MoveSpeed;
                     speed.MoveSpeed += riseValue;
-                    Debug.Log("speed up");
                     break;
                 case 2:
                     //Playerのジャンプ力up
                     var jump = go.GetComponent<PlayerController>().Movements;
                     itemBox.BefValue = jump.JumpPower;
                     jump.JumpPower += riseValue;
-                    Debug.Log("jump up");
                     break;
                 case 3:
                     //PlayerのHP上限up -> UIに反映
                     var health = go.GetComponent<PlayerController>().Health;
                     health.MaxHp += riseValue;
-                    Debug.Log("hp up");
                     //TODO：sliderのmavValueに反映させる
                     break;
                 case 4:
                     //ハズレ?(ex.制限時間down)
                     GameManager.Timer -= 5f;
-                    Debug.Log("timer out");
                     break;
             }
             itemBox.StatusNum = item;

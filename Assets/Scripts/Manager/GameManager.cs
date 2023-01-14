@@ -15,10 +15,8 @@ public class GameManager : MonoBehaviour, IPause
     [Header("テスト用")]
     [SerializeField] private bool _isPause = false;
 
-    //private static bool _isGodMode = false;
     private static float _timer = 0f;
 
-    //public static bool IsGodMode => _isGodMode;
     public static float Timer { get => _timer; set => _timer = value; }
 
     private void Awake()

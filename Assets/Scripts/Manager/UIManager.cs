@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     private Image _varColor = default;
     private static bool _isHit = false;
 
+    public Slider HpSlider { get => _hpSlider; set => _hpSlider = value; }
     public static bool IsHit { get => _isHit; set => _isHit = value; }
 
     private void Start()

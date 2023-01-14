@@ -36530,6 +36530,7 @@ MonoBehaviour:
     _isPause: 0
   _health:
     _hp: 100
+    _maxHp: 0
 --- !u!95 &2012741112
 Animator:
   serializedVersion: 4

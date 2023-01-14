@@ -50,7 +50,7 @@ public class ItemBox : MonoBehaviour
             }
         }
 
-        //テスト用(アイテム使用、削除)
+        //アイテム使用、削除
         if (Input.GetKeyDown(_itemKey))
             _itemEvent?.Invoke();
     }
@@ -123,7 +123,7 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            //ステータス向上アイテムの解除
+            //ステータス向上アイテムの解除(上昇前のステータスに戻す)
             var value = _player.GetComponent<PlayerController>().Movements;
             switch (_statusNum)
             {
