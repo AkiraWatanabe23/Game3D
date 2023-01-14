@@ -1,5 +1,6 @@
 ﻿using Consts;
 using Item;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,13 +17,18 @@ public class ItemBox : MonoBehaviour
     [SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent = default;
 
+    private int _statusNum = 0;
+    private float _befValue = 0;
     private float _usingTimer = 0f;
     private bool _isUsing = false;
     private GameObject _player = default;
+
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
     public int[] ItemCount { get => _itemCount; set => _itemCount = value; }
+    public int StatusNum { get => _statusNum; set => _statusNum = value; }
+    public float BefValue { get => _befValue; set => _befValue = value; }
     public bool IsUsing { get => _isUsing; set => _isUsing = value; }
 
     private void Awake()
@@ -126,8 +132,18 @@ public class ItemBox : MonoBehaviour
         else
         {
             //TODO：ステータス向上アイテムの解除
-
-            //元の値(上昇前)の値を保存しておいて、その値に戻す
+            var value = _player.GetComponent<PlayerController>().Movements;
+            //元の値(上昇前)の値をアイテム使用時に保存し、後でその値に戻す
+            switch (_statusNum)
+            {
+                case 1:
+                    value.MoveSpeed = _befValue;
+                    break;
+                case 2:
+                    value.JumpPower = _befValue;
+                    break;
+            }
+            Debug.Log("ステータス向上解除");
         }
     }
 }

@@ -5,8 +5,7 @@ public class PlayerHealth : IDamage
 {
     [Header("体力系Status")]
     [SerializeField] private int _hp = 100;
-
-    private int _maxHp = 0;
+    [SerializeField] private int _maxHp = 0;
 
     public int HP { get => _hp; set => _hp = value; }
     public int MaxHp { get => _maxHp; set => _maxHp = value; }
