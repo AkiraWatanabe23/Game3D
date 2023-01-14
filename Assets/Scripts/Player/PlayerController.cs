@@ -3,43 +3,39 @@
 /// <summary> Playerの各機能をまとめたもの </summary>
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private PlayerMove _movements = default;
+    [SerializeField] private PlayerMove _movement = default;
     [SerializeField] private PlayerHealth _health = default;
-    [SerializeField] private PlayerAttack _attack = default;
 
-    public PlayerMove Movements => _movements;
+    public PlayerMove Movements => _movement;
     public PlayerHealth Health => _health;
-    public PlayerAttack Attack => _attack;
 
     private void Awake()
     {
         var rb = GetComponent<Rigidbody>();
 
-        _movements.Init(transform, rb);
+        _movement.Init(transform, rb);
         _health.Init();
-        _attack.Init();
     }
 
     private void Update()
     {
-        _movements.Update();
+        _movement.Update();
         _health.Update();
-        _attack.Update();
     }
 
     private void FixedUpdate()
     {
-        _movements.FixedUpdate();
+        _movement.FixedUpdate();
     }
 
     //UIで扱うPause処理
     public void Pause()
     {
-        _movements.IsPause = true;
+        _movement.IsPause = true;
     }
 
     public void Resume()
     {
-        _movements.IsPause = false;
+        _movement.IsPause = false;
     }
 }

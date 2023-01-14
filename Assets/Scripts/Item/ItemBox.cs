@@ -125,7 +125,7 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            //TODO：ステルス向上アイテムの解除
+            //TODO：ステータス向上アイテムの解除
 
             //元の値(上昇前)の値を保存しておいて、その値に戻す
         }

@@ -9,7 +9,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image _crossHair = default;
     [SerializeField] private Slider _hpSlider = default;
 
-    private GameObject _player = default;
     private int _hp = default;
     //Sliderに関するHP値
     private float _middleHp = default;
@@ -24,9 +23,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.Find("Player");
-
-        _hp = _player.GetComponent<PlayerController>().Health.HP;
+        _hp = GameObject.Find("Player").GetComponent<PlayerController>().Health.HP;
         _middleHp = Mathf.Floor(_hp / 2);
         _warningHp = Mathf.Floor(_hp / 4);
         _maxHp = _hp;
@@ -58,13 +55,6 @@ public class UIManager : MonoBehaviour
         }
 
         //標準の色を切り替える
-        if (_isHit)
-        {
-            _crossHair.color = Color.white;
-        }
-        else
-        {
-            _crossHair.color = Color.red;
-        }
+        _crossHair.color = _isHit ?  Color.red : Color.white;
     }
 }

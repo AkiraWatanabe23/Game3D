@@ -1,7 +1,7 @@
 ﻿using Consts;
 using UnityEngine;
 
-/// <summary> アイテムのクラス(入手したらボックスに追加)
+/// <summary> アイテムのクラス(入手したらリストに追加)
 ///           使用等の処理はアイテムボックスに記述 </summary>
 public class ItemBase : MonoBehaviour
 {
