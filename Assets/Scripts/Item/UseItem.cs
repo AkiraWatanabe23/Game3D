@@ -41,7 +41,8 @@ namespace Item
             var itemBox = go.GetComponentInChildren<ItemBox>();
             int riseValue = Random.Range(5, 11);
 
-            //どのステータスがUPするかはランダムで決まります
+            //どのステータスがUPするかはランダムで決まる
+            //ステータス上昇中かどうかが、視覚的に分かりやすい方が良い
             switch (item)
             {
                 case 1:
@@ -59,10 +60,11 @@ namespace Item
                     Debug.Log("jump up");
                     break;
                 case 3:
-                    //TODO：PlayerのHP上限up -> UIに反映
+                    //PlayerのHP上限up -> UIに反映
                     var health = go.GetComponent<PlayerController>().Health;
                     health.MaxHp += riseValue;
                     Debug.Log("hp up");
+                    //TODO：sliderのmavValueに反映させる
                     break;
                 case 4:
                     //ハズレ?(ex.制限時間down)
