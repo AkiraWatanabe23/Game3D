@@ -1,6 +1,5 @@
 ﻿using Consts;
 using Item;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -53,9 +52,7 @@ public class ItemBox : MonoBehaviour
 
         //テスト用(アイテム使用、削除)
         if (Input.GetKeyDown(_itemKey))
-        {
             _itemEvent?.Invoke();
-        }
     }
 
     public static void AddToList(int item)
@@ -63,13 +60,9 @@ public class ItemBox : MonoBehaviour
         var sum = _instance.ItemCount[0] + _instance.ItemCount[1] + _instance.ItemCount[2];
 
         if (sum <= Define.ITEM_LIST_LIMIT)
-        {
             _instance.ItemCount[item]++;
-        }
         else
-        {
             Debug.Log("リストが上限に達しているため、アイテムを追加できません。");
-        }
     }
 
     public void DisposeToList(int item)
@@ -119,7 +112,6 @@ public class ItemBox : MonoBehaviour
         if (_player.CompareTag(Define.STEALTH_TAG))
         {
             //ステルスアイテムの解除
-            //↓Playerを元の状態に戻す
             _player.tag = Define.PLAYER_TAG;
 
             float alpha = 1f;
@@ -131,9 +123,8 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            //TODO：ステータス向上アイテムの解除
+            //ステータス向上アイテムの解除
             var value = _player.GetComponent<PlayerController>().Movements;
-            //元の値(上昇前)の値をアイテム使用時に保存し、後でその値に戻す
             switch (_statusNum)
             {
                 case 1:

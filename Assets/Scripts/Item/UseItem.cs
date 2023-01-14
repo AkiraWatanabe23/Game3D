@@ -45,14 +45,14 @@ namespace Item
             switch (item)
             {
                 case 1:
-                    //TODO：Playerの移動速度up
+                    //Playerの移動速度up
                     var speed = go.GetComponent<PlayerController>().Movements;
                     itemBox.BefValue = speed.MoveSpeed;
                     speed.MoveSpeed += riseValue;
                     Debug.Log("speed up");
                     break;
                 case 2:
-                    //TODO：Playerのジャンプ力up
+                    //Playerのジャンプ力up
                     var jump = go.GetComponent<PlayerController>().Movements;
                     itemBox.BefValue = jump.JumpPower;
                     jump.JumpPower += riseValue;

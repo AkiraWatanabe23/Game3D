@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
 {
     [Tooltip("シーン上に表示するText")]
     [SerializeField] private Text[] _sceneTexts = new Text[5];
-    [SerializeField] private Image _crossHair = default;
     [SerializeField] private Slider _hpSlider = default;
 
     private int _hp = default;
@@ -42,19 +41,10 @@ public class UIManager : MonoBehaviour
 
         //残りの体力によってSliderの色を変える
         if (_hp <= _warningHp)
-        {
             _varColor.color = Color.red;
-        }
         else if (_hp <= _middleHp)
-        {
             _varColor.color = Color.yellow;
-        }
         else
-        {
             _varColor.color = Color.green;
-        }
-
-        //標準の色を切り替える
-        _crossHair.color = _isHit ?  Color.red : Color.white;
     }
 }
