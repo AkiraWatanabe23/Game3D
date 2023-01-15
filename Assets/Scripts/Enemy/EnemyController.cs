@@ -33,11 +33,6 @@ public class EnemyController : MonoBehaviour, IPause
         _attack.Update();
     }
 
-    private void OnCollisionEnter(Collision col)
-    {
-        _attack.OnCollisionEnter(col);
-    }
-
     private void OnTriggerStay(Collider other)
     {
         _movement.OnTriggerStay(other);

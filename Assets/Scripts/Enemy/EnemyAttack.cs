@@ -1,5 +1,4 @@
-﻿using Consts;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class EnemyAttack
@@ -16,19 +15,9 @@ public class EnemyAttack
 
     public void Update()
     {
-        //一定時間経ったらEnemyの攻撃
-        //if (GameManager.Timer >= _attackInterval)
-        //{
-
-        //}
-    }
-
-    public void OnCollisionEnter(Collision col)
-    {
-        //TODO：攻撃処理
-        if (col.gameObject.CompareTag(Define.PLAYER_TAG))
+        if (GameManager.Timer >= _attackInterval)
         {
-
+            //一定時間経ったらEnemyの攻撃
         }
     }
 }

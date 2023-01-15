@@ -7,7 +7,10 @@ public class ToNextFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneLoaders.PassToLoad
-                (Define.Scenes[_scene]);
+        if (other.CompareTag(Define.PLAYER_TAG) ||
+            other.CompareTag(Define.STEALTH_TAG))
+        {
+            SceneLoaders.PassToLoad(Define.Scenes[_scene]);
+        }
     }
 }
