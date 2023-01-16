@@ -47,7 +47,10 @@ public class EnemyMove
         }
 
         if (ChasePlayer())
+        {
+            Debug.Log("Player発見");
             _isChasing = true;
+        }
 
         //Playerを追跡する
         if (_isChasing)
@@ -82,18 +85,5 @@ public class EnemyMove
         var angle = Vector3.Angle(_trans.forward, target);
 
         return angle <= _searchAngle && target.magnitude <= _searchDis;
-        //if (angle <= _searchAngle)
-        //{
-        //    Debug.Log("Player発見");
-        //    _isChasing = true;
-        //    _player = go;
-        //}
-
-        //var look = _trans.forward * _searchDis;
-        //var target = _player.transform.position - _trans.position;
-        //float cosHalfSight = Mathf.Cos(_searchAngle / 2 * Mathf.Deg2Rad);
-        //float cosTarget = Vector3.Dot(look, target) / (look.magnitude * target.magnitude);
-
-        //return cosTarget > cosHalfSight && target.magnitude < _searchDis;
     }
 }
