@@ -37,12 +37,11 @@ public class GameManager : MonoBehaviour, IPause
         if (!_isPause)
         {
             _timer -= Time.deltaTime;
-        }
-
-        if (_timer <= 0f)
-        {
-            //TODO：制限時間が0になった時に勝利判定をする
-            SceneLoaders.PassToLoad(Define.Scenes[SceneNames.RESULT_SCENE]);
+            if (_timer <= 0f)
+            {
+                //TODO：制限時間が0になった時に勝利判定をする
+                SceneLoaders.PassToLoad(Define.Scenes[SceneNames.RESULT_SCENE]);
+            }
         }
 
         //ゲームの一時停止

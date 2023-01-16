@@ -31,13 +31,11 @@ public class PlayerController : MonoBehaviour
     //UIで扱うPause処理
     public void Pause()
     {
-        //_movement.IsPause = true;
         GameManager.IsPause = true;
     }
 
     public void Resume()
     {
-        //_movement.IsPause = false;
         GameManager.IsPause = false;
     }
 }

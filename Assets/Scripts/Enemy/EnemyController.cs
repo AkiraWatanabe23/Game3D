@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour, IPause
 {
     [SerializeField] private EnemyMove _movement = default;
@@ -9,10 +10,7 @@ public class EnemyController : MonoBehaviour, IPause
 
     private NavMeshAgent _agent = default;
 
-    public EnemyMove Movement => _movement;
-    public EnemyAttack Attack => _attack;
-
-    private void Start()
+    private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
 
@@ -30,11 +28,6 @@ public class EnemyController : MonoBehaviour, IPause
 
         _movement.Update();
         _attack.Update();
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        _movement.OnTriggerStay(other);
     }
 
     [Obsolete]

@@ -24,10 +24,6 @@ public class PlayerMove : IPause
 
     public void Update()
     {
-        //if (_isPause)
-        //{
-        //    Pause();
-        //}
         if (GameManager.IsPause)
             Pause();
         else

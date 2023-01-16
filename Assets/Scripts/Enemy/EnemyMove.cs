@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [System.Serializable]
-[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMove
 {
     [SerializeField] private Transform[] _movePos = new Transform[2];
-    [Tooltip("視界の範囲(*2)")]
+    [Tooltip("視野の範囲")]
     [Range(0f, 180f)]
     [SerializeField] private float _searchAngle = 0f;
+    [Tooltip("視野の距離")]
+    [SerializeField] private float _searchDis = 1f;
     [Tooltip("何秒経ったらPlayerの追跡をやめるか")]
     [SerializeField] private float _stopChaseTime = 1f;
 
@@ -17,7 +18,6 @@ public class EnemyMove
     private GameObject _player = default;
     private Transform _trans = default;
     private int _currentMoveIndex = 0;
-    private float _moveSpeed = 0f;
     private float _chaseTime = 0f;
     private bool _isChasing = false;
 
@@ -25,11 +25,11 @@ public class EnemyMove
     {
         _agent = agent;
         _trans = trans;
+        _player = GameObject.FindGameObjectWithTag(Define.PLAYER_TAG);
 
         _currentMoveIndex = 0;
         _isChasing = false;
 
-        _moveSpeed = _agent.speed;
         _agent.SetDestination(_movePos[0].position);
     }
 
@@ -45,6 +45,9 @@ public class EnemyMove
         {
             SwitchTarget();
         }
+
+        if (ChasePlayer())
+            _isChasing = true;
 
         //Playerを追跡する
         if (_isChasing)
@@ -67,33 +70,30 @@ public class EnemyMove
     /// <summary> 進行先を次の位置に切り替える </summary>
     private void SwitchTarget()
     {
-        _agent.speed = _moveSpeed;
         _currentMoveIndex++;
         _agent.SetDestination
             (_movePos[_currentMoveIndex % _movePos.Length].position);
     }
 
     /// <summary> Playerが視界の中に入っているか </summary>
-    /// <param name="go"> Playerのオブジェクト </param>
-    private void ChasePlayer(GameObject go)
+    private bool ChasePlayer()
     {
-        var playerVec = go.transform.position - _trans.position;
-        var angle = Vector3.Angle(_trans.forward, playerVec);
+        var target = _player.transform.position - _trans.position;
+        var angle = Vector3.Angle(_trans.forward, target);
 
-        if (angle <= _searchAngle)
-        {
-            Debug.Log("Player発見");
-            _isChasing = true;
-            _player = go;
-        }
-    }
+        return angle <= _searchAngle && target.magnitude <= _searchDis;
+        //if (angle <= _searchAngle)
+        //{
+        //    Debug.Log("Player発見");
+        //    _isChasing = true;
+        //    _player = go;
+        //}
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag(Define.PLAYER_TAG))
-        {
-            //Playerを発見した(視界に入った)ときに追跡するようにする
-            ChasePlayer(other.gameObject);
-        }
+        //var look = _trans.forward * _searchDis;
+        //var target = _player.transform.position - _trans.position;
+        //float cosHalfSight = Mathf.Cos(_searchAngle / 2 * Mathf.Deg2Rad);
+        //float cosTarget = Vector3.Dot(look, target) / (look.magnitude * target.magnitude);
+
+        //return cosTarget > cosHalfSight && target.magnitude < _searchDis;
     }
 }
