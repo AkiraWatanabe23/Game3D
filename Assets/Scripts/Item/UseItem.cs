@@ -46,16 +46,13 @@ namespace Item
             switch (item)
             {
                 case 1:
-                    //Playerの移動速度up
-                    var speed = go.GetComponent<PlayerController>().Movements;
-                    itemBox.BefValue = speed.MoveSpeed;
-                    speed.MoveSpeed += riseValue;
-                    break;
                 case 2:
-                    //Playerのジャンプ力up
-                    var jump = go.GetComponent<PlayerController>().Movements;
-                    itemBox.BefValue = jump.JumpPower;
-                    jump.JumpPower += riseValue;
+                    //Playerの移動系能力up
+                    var move = go.GetComponent<PlayerController>().Movements;
+
+                    itemBox.UpValue = riseValue;
+                    move.MoveSpeed += riseValue;
+                    move.JumpPower += riseValue;
                     break;
                 case 3:
                     //PlayerのHP上限up -> UIに反映
