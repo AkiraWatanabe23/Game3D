@@ -10,8 +10,6 @@ public class ItemBox : MonoBehaviour
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [SerializeField] private int[] _itemCount = new int[3];
-
-    [Header("テスト用")]
     [Tooltip("アイテムの有効時間")]
     [SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent = default;
@@ -57,7 +55,9 @@ public class ItemBox : MonoBehaviour
 
     public static void AddToList(int item)
     {
-        var sum = _instance.ItemCount[0] + _instance.ItemCount[1] + _instance.ItemCount[2];
+        int sum = 0;
+        foreach (var n in _instance.ItemCount)
+            sum += n;
 
         if (sum <= Define.ITEM_LIST_LIMIT)
             _instance.ItemCount[item]++;
@@ -74,7 +74,7 @@ public class ItemBox : MonoBehaviour
         }
         else
         {
-            Debug.LogError("指定されたアイテムは既にリストにありません。");
+            Debug.LogError("指定されたアイテムはリストにありません。");
         }
     }
 

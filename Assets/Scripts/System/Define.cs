@@ -61,5 +61,6 @@ namespace Consts
         STEALTH,
         HEAL,
         STATUSUP,
+        SPECIAL,
     }
 }
