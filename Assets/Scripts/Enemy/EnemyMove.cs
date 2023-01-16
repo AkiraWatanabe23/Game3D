@@ -46,12 +46,6 @@ public class EnemyMove
             SwitchTarget();
         }
 
-        if (ChasePlayer())
-        {
-            Debug.Log("Player発見");
-            _isChasing = true;
-        }
-
         //Playerを追跡する
         if (_isChasing)
         {
@@ -68,6 +62,15 @@ public class EnemyMove
                 Debug.Log("Playerの追跡を終了します");
             }
         }
+        //追跡していない間は、Playerが視界に入っているか調べる
+        else
+        {
+            if (ChasePlayer())
+            {
+                Debug.Log("Player発見");
+                _isChasing = true;
+            }
+        }
     }
 
     /// <summary> 進行先を次の位置に切り替える </summary>
@@ -78,7 +81,7 @@ public class EnemyMove
             (_movePos[_currentMoveIndex % _movePos.Length].position);
     }
 
-    /// <summary> Playerが視界の中に入っているか </summary>
+    /// <summary> Playerが視界に入っているか </summary>
     private bool ChasePlayer()
     {
         var target = _player.transform.position - _trans.position;
