@@ -7,9 +7,6 @@ public class PlayerMove : IPause
     [SerializeField] private float _moveSpeed = 1f;
     [SerializeField] private float _jumpPower = 1f;
 
-    [Header("テスト用")]
-    [SerializeField] private bool _isPause = false;
-
     //↓移動の計算等に用いる変数
     private Transform _trans;
     private Rigidbody _rb;
@@ -18,7 +15,6 @@ public class PlayerMove : IPause
 
     public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
     public float JumpPower { get => _jumpPower; set => _jumpPower = value; }
-    public bool IsPause { get => _isPause; set => _isPause = value; }
 
     public void Init(Transform trans, Rigidbody rb)
     {
@@ -28,14 +24,14 @@ public class PlayerMove : IPause
 
     public void Update()
     {
-        if (_isPause)
-        {
+        //if (_isPause)
+        //{
+        //    Pause();
+        //}
+        if (GameManager.IsPause)
             Pause();
-        }
         else
-        {
             Resume();
-        }
 
         if (!_rb.isKinematic)
         {

@@ -457,7 +457,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _playerPrefab: {fileID: 0}
+  _playerPrefab: {fileID: 4770620538333937426, guid: 60a2b3de31029d346af0c582288ed114, type: 3}
   _isPause: 0
 --- !u!82 &415800733
 AudioSource:
@@ -1017,7 +1017,7 @@ GameObject:
   - component: {fileID: 1216531141}
   - component: {fileID: 1216531140}
   m_Layer: 5
-  m_Name: TimerTest
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -58,7 +58,7 @@ namespace Item
                     //PlayerのHP上限up -> UIに反映
                     var health = go.GetComponent<PlayerController>().Health;
                     health.MaxHp += riseValue;
-                    //TODO：sliderのmavValueに反映させる
+                    //TODO：sliderのmaxValueに反映させる
                     break;
                 case 4:
                     //ハズレ?(ex.制限時間down)

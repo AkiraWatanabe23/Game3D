@@ -6,7 +6,7 @@ public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [SerializeField] private List<Transform> _spawnPos = new();
-    [SerializeField] private float _interval = 1f;
+    [SerializeField] private float _interval = 5f;
 
     private void Start()
     {

@@ -25,7 +25,7 @@ public class ItemBox : MonoBehaviour
     private static ItemBox _instance = default;
 
     public GameObject[] Items => _items;
-    public int[] ItemCount { get => _itemCount; set => _itemCount = value; }
+    public int[] ItemCount => _itemCount;
     public int StatusNum { get => _statusNum; set => _statusNum = value; }
     public float UpValue { get => _upValue; set => _upValue = value; }
     public bool IsUsing { get => _isUsing; set => _isUsing = value; }
@@ -131,9 +131,9 @@ public class ItemBox : MonoBehaviour
                 case 2:
                     value.MoveSpeed -= _upValue;
                     value.JumpPower -= _upValue;
+                    Debug.Log("ステータス向上解除");
                     break;
             }
-            Debug.Log("ステータス向上解除");
         }
     }
 }

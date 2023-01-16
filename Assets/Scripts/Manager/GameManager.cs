@@ -1,4 +1,5 @@
 ﻿using Consts;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +10,13 @@ public class GameManager : MonoBehaviour, IPause
     [Tooltip("ゲームを終了するキー")]
     [SerializeField] private KeyCode _closeKey;
     [Tooltip("Playerの初期位置をランダムで決める")]
-    [SerializeField] private Transform[] _playerSpawn = new Transform[4];
+    [SerializeField] private List<Transform> _playerSpawn = new();
     [SerializeField] private GameObject _playerPrefab;
 
-    [Header("テスト用")]
-    [SerializeField] private bool _isPause = false;
-
+    private static bool _isPause = false;
     private static float _timer = 0f;
 
+    public static bool IsPause { get => _isPause; set => _isPause = value; }
     public static float Timer { get => _timer; set => _timer = value; }
 
     private void Awake()
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour, IPause
             _timer = Define.GAME_TIME;
         }
         //TODO：Playerを設定したスポーン位置の内のいずれかにランダムで生成する
-        //Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Length)]);
+        Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Count)]);
     }
 
     private void Update()
@@ -42,8 +42,7 @@ public class GameManager : MonoBehaviour, IPause
         if (_timer <= 0f)
         {
             //TODO：制限時間が0になった時に勝利判定をする
-            SceneLoaders.PassToLoad
-                (Define.Scenes[SceneNames.RESULT_SCENE]);
+            SceneLoaders.PassToLoad(Define.Scenes[SceneNames.RESULT_SCENE]);
         }
 
         //ゲームの一時停止
