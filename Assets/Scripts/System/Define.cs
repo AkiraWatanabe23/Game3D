@@ -7,7 +7,7 @@ namespace Consts
     {
         //数値関連の定数
         public const int ITEM_LIST_LIMIT = 20;
-        public const float GAME_TIME = 10f;
+        public const float GAME_TIME = 100f;
 
         //タグ名(使うもののみ)
         public const string PLAYER_TAG = "Player";

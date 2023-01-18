@@ -61,11 +61,13 @@ public class PlayerMove : IPause
 
     public void Pause()
     {
+        //Rigidbodyの物理演算を停止させる
         _rb.isKinematic = true;
     }
 
     public void Resume()
     {
+        //Rigidbodyの物理演算を再開させる
         _rb.isKinematic = false;
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class ItemBox : MonoBehaviour
 {
-    [Tooltip("アイテムリストを開くキー")]
-    [SerializeField] private KeyCode _itemKey;
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [SerializeField] private int[] _itemCount = new int[3];
@@ -47,10 +45,6 @@ public class ItemBox : MonoBehaviour
                 CancelItem();
             }
         }
-
-        //アイテム使用、削除
-        if (Input.GetKeyDown(_itemKey))
-            _itemEvent?.Invoke();
     }
 
     public static void AddToList(int item)

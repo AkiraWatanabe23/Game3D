@@ -27,15 +27,4 @@ public class PlayerController : MonoBehaviour
     {
         _movement.FixedUpdate();
     }
-
-    //UIで扱うPause処理
-    public void Pause()
-    {
-        GameManager.IsPause = true;
-    }
-
-    public void Resume()
-    {
-        GameManager.IsPause = false;
-    }
 }

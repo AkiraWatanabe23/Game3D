@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour, IPause
+public class GameManager : MonoBehaviour
 {
-    [Tooltip("一時停止するキー")]
-    [SerializeField] private KeyCode _pauseKey;
-    [Tooltip("ゲームを終了するキー")]
-    [SerializeField] private KeyCode _closeKey;
     [Tooltip("Playerの初期位置をランダムで決める")]
     [SerializeField] private List<Transform> _playerSpawn = new();
     [SerializeField] private GameObject _playerPrefab;
 
     private static bool _isPause = false;
-    private static float _timer = 0f;
+    private static float _timer = Define.GAME_TIME;
 
     public static bool IsPause { get => _isPause; set => _isPause = value; }
     public static float Timer { get => _timer; set => _timer = value; }
@@ -27,8 +23,11 @@ public class GameManager : MonoBehaviour, IPause
         {
             _timer = Define.GAME_TIME;
         }
-        //TODO：Playerを設定したスポーン位置の内のいずれかにランダムで生成する
-        Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Count)]);
+        //Playerを設定したスポーン位置の内のいずれかにランダムで生成する
+        if (_playerSpawn.Count > 0 && _playerPrefab)
+        {
+            Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Count)]);
+        }
     }
 
     private void Update()
@@ -43,39 +42,5 @@ public class GameManager : MonoBehaviour, IPause
                 SceneLoaders.PassToLoad(Define.Scenes[SceneNames.RESULT_SCENE]);
             }
         }
-
-        //ゲームの一時停止
-        if (Input.GetKeyDown(_pauseKey))
-        {
-            if (!_isPause)
-                Pause();
-            else
-                Resume();
-        }
-
-        //ゲームの終了
-        if (Input.GetKeyDown(_closeKey))
-            GameClose();
-    }
-
-    private void GameClose()
-    {
-#if UNITY_EDITOR
-    UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
-    }
-
-    public void Pause()
-    {
-        _isPause = true;
-        Debug.Log("Pause");
-    }
-
-    public void Resume()
-    {
-        _isPause = false;
-        Debug.Log("Resume");
     }
 }
