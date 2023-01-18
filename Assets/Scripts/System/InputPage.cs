@@ -17,7 +17,7 @@ public class InputPage : MonoBehaviour, IPause
     {
         if (Input.GetKeyDown(_closeKey))
         {
-            //ゲームを終了する
+            //ゲームを終了する(テスト)
             GameClose();
         }
 
@@ -37,7 +37,8 @@ public class InputPage : MonoBehaviour, IPause
         }
     }
 
-    private void GameClose()
+    /// <summary> ゲームを閉じる(UIでも設定できるようにpublic) </summary>
+    public void GameClose()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
