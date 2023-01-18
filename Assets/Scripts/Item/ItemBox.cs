@@ -7,7 +7,7 @@ public class ItemBox : MonoBehaviour
 {
     [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
-    [SerializeField] private int[] _itemCount = new int[3];
+    [SerializeField] private int[] _itemCount = new int[4];
     [Tooltip("アイテムの有効時間")]
     [SerializeField] private float _validTime = 1f;
     [SerializeField] private UnityEvent _itemEvent = default;

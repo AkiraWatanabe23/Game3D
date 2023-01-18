@@ -5243,6 +5243,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4770620538913751167, guid: 60a2b3de31029d346af0c582288ed114, type: 3}
+      propertyPath: _itemCount.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4770620538913751167, guid: 60a2b3de31029d346af0c582288ed114, type: 3}
       propertyPath: _itemEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 667583090}

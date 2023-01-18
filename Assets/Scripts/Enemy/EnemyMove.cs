@@ -84,6 +84,11 @@ public class EnemyMove
     /// <summary> Playerが視界に入っているか </summary>
     private bool ChasePlayer()
     {
+        if (_player.CompareTag(Define.STEALTH_TAG))
+        {
+            return false;
+        }
+
         var target = _player.transform.position - _trans.position;
         var angle = Vector3.Angle(_trans.forward, target);
 
