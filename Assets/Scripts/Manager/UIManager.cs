@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Consts;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary> ゲームシーン内のUIの表示をこのクラスで行う </summary>
@@ -21,7 +22,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        _hp = GameObject.Find("Player").GetComponent<PlayerController>().Health.HP;
+        _hp = GameObject.FindGameObjectWithTag(Define.PLAYER_TAG).
+            GetComponent<PlayerController>().Health.HP;
         _middleHp = Mathf.Floor(_hp / 2);
         _warningHp = Mathf.Floor(_hp / 4);
         _maxHp = _hp;
