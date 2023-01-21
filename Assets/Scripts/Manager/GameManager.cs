@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [Tooltip("Playerの初期位置をランダムで決める")]
     [SerializeField] private List<Transform> _playerSpawn = new();
-    [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private GameObject _player;
 
     private static bool _isPause = false;
     private static float _timer = Define.GAME_TIME;
@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
         {
             _timer = Define.GAME_TIME;
         }
-        //Playerを設定したスポーン位置の内のいずれかにランダムで生成する
-        if (_playerSpawn.Count > 0 && _playerPrefab)
+        //Playerを設定したスポーン位置の内のいずれかにランダムで出現する
+        if (_playerSpawn.Count > 0 && _player)
         {
-            Instantiate(_playerPrefab, _playerSpawn[Random.Range(0, _playerSpawn.Count)]);
+            _player.transform.position = _playerSpawn[Random.Range(0, _playerSpawn.Count)].transform.position;
         }
     }
 
