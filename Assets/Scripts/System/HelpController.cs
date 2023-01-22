@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HelpController : MonoBehaviour
@@ -12,7 +10,7 @@ public class HelpController : MonoBehaviour
 
     private void Start()
     {
-        
+        _selecting.gameObject.transform.position = _helpPages[1].transform.position;
     }
 
     private void Update()

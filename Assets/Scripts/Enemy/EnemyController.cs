@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour, IPause
         _agent = GetComponent<NavMeshAgent>();
 
         _movement.Init(_agent, transform);
-        _attack.Init();
+        _attack.Init(transform);
     }
 
     [Obsolete]

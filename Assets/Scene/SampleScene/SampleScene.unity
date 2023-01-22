@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSpawn: []
-  _playerPrefab: {fileID: 0}
+  _player: {fileID: 0}
 --- !u!114 &339860217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2848,6 +2848,9 @@ MonoBehaviour:
   _attack:
     _attackValue: 10
     _attackInterval: 5
+    _layer:
+      serializedVersion: 2
+      m_Bits: 64
 --- !u!1 &1458767383
 GameObject:
   m_ObjectHideFlags: 0
