@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class ItemBox : MonoBehaviour
 {
-    [Tooltip("アイテムの種類")]
     [SerializeField] private GameObject[] _items = new GameObject[3];
     [SerializeField] private int[] _itemCount = new int[4];
     [Tooltip("アイテムの有効時間")]
@@ -20,7 +19,6 @@ public class ItemBox : MonoBehaviour
 
     private static ItemBox _instance = default;
 
-    public GameObject[] Items => _items;
     public int[] ItemCount => _itemCount;
     public int StatusNum { get => _statusNum; set => _statusNum = value; }
     public float UpValue { get => _upValue; set => _upValue = value; }
