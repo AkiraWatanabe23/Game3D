@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text[] _sceneTexts = new Text[5];
     [SerializeField] private Slider _hpSlider = default;
 
+    //PlayerHP
     private int _hp = default;
     //Sliderに関するHP値
     private float _middleHp = default;
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         //TODO：ステータス等のUI表示
-        _sceneTexts[0].text = GameManager.Timer.ToString("F0");
+        _sceneTexts[0].text = $"TIMER : {GameManager.Timer : 0}";
         _hpSlider.value = _hp;
 
         //残りの体力によってSliderの色を変える

@@ -8,6 +8,7 @@ public class EnemyAttack
     [SerializeField] private LayerMask _layer = default;
 
     private float _attackCount = 0f;
+    private float _rayDis = 10f;
     private Transform _trans = default;
 
     public void Init(Transform trans)
@@ -20,10 +21,9 @@ public class EnemyAttack
         _attackCount += Time.deltaTime;
         if (_attackCount >= _attackInterval)
         {
-            if (Physics.Raycast(_trans.position, _trans.forward, out RaycastHit hit, 10, _layer))
+            if (Physics.Raycast(_trans.position, _trans.forward, out RaycastHit hit, _rayDis, _layer))
             {
-                //TODO：攻撃
-                //Animation再生、Playerにダメージ
+                //TODO：攻撃処理(Animation再生、SE流す、Playerにダメージ)
                 hit.collider.gameObject.GetComponent<PlayerController>().Health.Damage(_attackValue);
                 Debug.Log($"Playerに {_attackValue}ダメージ");
             }

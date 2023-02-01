@@ -11,7 +11,7 @@ public class ItemSpawner : MonoBehaviour
     private void Start()
     {
         //ItemSpawn()を_interval(s)後に呼び出し、その後_interval(s)間隔で実行する
-        //TODO：SpawnのPause処理どうしよう...
+        //TODO：SpawnのPause処理
         InvokeRepeating(nameof(ItemSpawn), _interval, _interval);
     }
 

@@ -22,11 +22,12 @@ public class GameManager : MonoBehaviour
             Define.Scenes[SceneNames.FF_SCENE])
         {
             _timer = Define.GAME_TIME;
-        }
-        //Playerを設定したスポーン位置の内のいずれかにランダムで出現する
-        if (_playerSpawn.Count > 0 && _player)
-        {
-            _player.transform.position = _playerSpawn[Random.Range(0, _playerSpawn.Count)].transform.position;
+
+            //Playerを設定したスポーン位置の内のいずれかにランダムで出現する(最初のみ)
+            if (_playerSpawn.Count > 0 && _player)
+            {
+                _player.transform.position = _playerSpawn[Random.Range(0, _playerSpawn.Count)].transform.position;
+            }
         }
     }
 

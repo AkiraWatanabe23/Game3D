@@ -22,12 +22,16 @@ public class EnemyController : MonoBehaviour, IPause
     private void Update()
     {
         if (GameManager.IsPause)
+        {
             Pause();
+        }
         else
+        {
             Resume();
 
-        _movement.Update();
-        _attack.Update();
+            _movement.Update();
+            _attack.Update();
+        }
     }
 
     [Obsolete]

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// SEを流すときに使う
@@ -6,7 +7,7 @@
 public class SoundManager : MonoBehaviour
 {
     [Tooltip("SEの配列")]
-    [SerializeField] private AudioClip[] _clips = new AudioClip[5];
+    [SerializeField] private List<AudioClip> _clips = new();
 
     private AudioSource _source;
 
